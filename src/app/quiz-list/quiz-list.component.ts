@@ -25,6 +25,6 @@ export class QuizListComponent {
   }
 
   onViewParticipants() {
-    this.isModalOpen = true;
+    this.isModalOpen = false;
   }
 }
