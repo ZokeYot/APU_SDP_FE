@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { QuizzesComponent } from "../quizzes/quizzes.component";
-import { ConversationComponent } from "../conversation/conversation.component";
+import { ConversationComponent } from "../../conversation/conversation.component";
 import { ShopComponent } from "../shop/shop.component";
 
 @Component({
@@ -12,9 +12,9 @@ import { ShopComponent } from "../shop/shop.component";
   imports: [CommonModule, QuizzesComponent, ConversationComponent, ShopComponent]
 })
 export class StudentMainPageComponent {
-  quizPage = true;
+  quizPage = false;
   shopPage = false;
-  conversationPage = false;
+  conversationPage = true;
 
   switchPage(page: String) {
     switch (page) {
