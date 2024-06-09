@@ -1,11 +1,21 @@
 import { Routes } from '@angular/router';
-import { UserListComponent } from './user-list/user-list.component';
+import { StudentMainPageComponent } from './section/student/student-main-page/student-main-page.component';
+import { roleGuard } from './guard/role.guard';
+import { Role } from './model/role';
+import { LecturerMainPageComponent } from './section/lectuerer/lecturer-main-page/lecturer-main-page.component';
+import { RegisterComponent } from './section/register/register.component';
+import { ConversationComponent } from './section/conversation/conversation.component';
+
+
 import { QuizListComponent } from './quiz-list/quiz-list.component';
 import { MaterialListComponent } from './material-list/material-list.component';
 
 export const routes: Routes = [
-    { path: "user", component: UserListComponent },
-    { path: ".", component: UserListComponent },
+    { path: "something", component: StudentMainPageComponent /* canActivate: [roleGuard], data: { roles: [Role.STUDENT] } */ },
+    { path: "lecturer", component: LecturerMainPageComponent /* canActivate: [roleGuard], data: { roles: [Role.LECTURER] } */ },
+    { path: "", component: RegisterComponent },
+    { path: "lecturer-main", component: LecturerMainPageComponent },
+    { path: "conversation", component: ConversationComponent },
     { path: 'quiz', component: QuizListComponent },
     { path: 'materials', component: MaterialListComponent }
 ];
