@@ -1,0 +1,29 @@
+<div class="modal" (click)="close()">
+    <div class="modal-content">
+      <span class="close_btn" (click)="close()"> &times; </span>
+      <h1>{{ modalContent }}</h1>
+      <h2>Ranking</h2>
+      <a class="view_participant" (click)="toggleParticipants()">View All Participants</a>
+  
+      <div *ngIf="!showParticipants">
+        <div class="student">1.Serena: 92%</div>
+        <div class="student">2.Faze: 90%</div>
+        <div class="student">3.Sarah: 85%</div>
+        <div class="student">4.Brock: 80%</div>
+        <div class="student">5.Abe: 75%</div>
+      </div>
+      <div *ngIf="showParticipants">
+        <div class="student">1.Serena: 92%</div>
+        <div class="student">2.Faze: 90%</div>
+        <div class="student">3.Sarah: 85%</div>
+        <div class="student">4.Brock: 80%</div>
+        <div class="student">5.Abe: 75%</div>
+        <div class="student">6.Alice: 72%</div>
+        <div class="student">7.Bobby: 70%</div>
+        <div class="student">8.Charlie: 68%</div>
+        <div class="student">9.David: 65%</div>
+        <div class="student">10.Eve: 63%</div>
+      </div>
+    </div>
+  </div>
+  
