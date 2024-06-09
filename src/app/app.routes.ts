@@ -9,6 +9,7 @@ import { ConversationComponent } from './section/conversation/conversation.compo
 
 import { QuizListComponent } from './quiz-list/quiz-list.component';
 import { MaterialListComponent } from './material-list/material-list.component';
+import { MaterialDetailsComponent } from './material-details/material-details.component';
 
 export const routes: Routes = [
     { path: "something", component: StudentMainPageComponent /* canActivate: [roleGuard], data: { roles: [Role.STUDENT] } */ },
@@ -17,5 +18,6 @@ export const routes: Routes = [
     { path: "lecturer-main", component: LecturerMainPageComponent },
     { path: "conversation", component: ConversationComponent },
     { path: 'quiz', component: QuizListComponent },
-    { path: 'materials', component: MaterialListComponent }
+    { path: 'materials', component: MaterialListComponent },
+    { path: 'material-details/:title/:filename/:date', component: MaterialDetailsComponent}
 ];
