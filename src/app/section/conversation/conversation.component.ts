@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Message } from '../../model/message';
 
@@ -17,19 +17,24 @@ export class ConversationComponent {
   curUserID: number = 1;
   destUserID: number = 2;
 
+
   @ViewChild('messageBox') textArea !: ElementRef
+  @ViewChild('chatBox') chatBox !: ElementRef
+
+  constructor(private cdr: ChangeDetectorRef) {
+
+  }
 
   handleKeydown(event: KeyboardEvent): void {
     const textarea = this.textArea.nativeElement;
+
 
     if (event.key === 'Enter' && event.shiftKey) {
       this.adjustHeight(textarea);
     }
     else if (event.key === 'Enter') {
       event.preventDefault();
-      const text = textarea.value.trim();
-      if (text !== "" && text !== textarea.placeholder)
-        this.sendMessage()
+      this.sendMessage()
     }
   }
 
@@ -45,9 +50,14 @@ export class ConversationComponent {
   }
 
   sendMessage(): void {
-    this.messages.push(new Message(this.message, this.curUserID, this.destUserID))
+    const textarea = this.textArea.nativeElement;
+    const text = textarea.value.trim();
+    if (text !== "" && text !== textarea.placeholder)
+      this.messages.push(new Message(this.message, this.curUserID, this.destUserID))
     this.textArea.nativeElement.style.height = '50px';
     this.textArea.nativeElement.value = ''
+    this.cdr.detectChanges();
+    this.chatBox.nativeElement.scrollTop = this.chatBox.nativeElement.scrollHeight;
   }
 
 
@@ -61,7 +71,6 @@ export class ConversationComponent {
     if (files && files.length > 0) {
       const file = files[0];
       const attachment = `Attachment : ${file.name}`;
-
     }
   }
 }
