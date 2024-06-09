@@ -7,22 +7,26 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
 }
+
 .container {
     text-align: center;
     width: 90%;
     max-width: 500px;
 }
+
 h1 {
     font-size: 48px;
     margin-bottom: 10px;
 }
-.login-box {
+
+.reset-box {
     background-color: #e0e0e0;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-.login-box h2 {
+
+.reset-box h2 {
     background-color: #bfc9a6;
     margin: -20px -20px 20px -20px;
     padding: 10px;
@@ -31,8 +35,9 @@ h1 {
     font-size: 24px;
     color: #333;
 }
-.login-box input[type="text"],
-.login-box input[type="password"] {
+
+.reset-box input[type="name"],
+.reset-box input[type="email"] {
     width: calc(100% - 24px);
     padding: 10px;
     margin-bottom: 10px;
@@ -40,36 +45,36 @@ h1 {
     border-radius: 4px;
     text-align: center;
 }
-.login-box button {
+
+.reset-box .find-button {
     padding: 10px 20px;
     border: none;
     background-color: #999;
     color: white;
+    margin-top: 5px;
     border-radius: 4px;
     cursor: pointer;
+    width: auto;
+    font-size: 16px;
 }
-.login-box button:hover {
+
+.reset-box .find-button:hover {
     background-color: #666;
 }
-.register-text {
-    margin-top: 10px;
-    color: #333;
-}
-.register-link {
-    color: blue;
-    text-decoration: none;
-}
-.register-link:hover {
-    text-decoration: underline;
-}
-.find-account-link {
+
+.back-to-login-link {
     display: block;
-    margin-bottom: 10px;
-    color: #999;
+    margin-top: 10px;
+    text-align: center;
+    color: black;
     text-decoration: none;
-    text-align: right;
-    margin-right: 12px;
+    font-size: 20px;
 }
-.find-account-link:hover {
+
+.back-to-login-link .arrow {
+    font-size: 26px;
+}
+
+.back-to-login-link:hover {
     text-decoration: underline;
 }
