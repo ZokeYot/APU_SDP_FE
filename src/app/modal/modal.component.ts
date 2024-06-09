@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -14,11 +14,15 @@ export class ModalComponent {
   @Output() closeModal = new EventEmitter<void>();
   showParticipants = false;
 
+
+
   close() {
+    console.log(11111)
     this.closeModal.emit();
   }
 
   toggleParticipants() {
     this.showParticipants = !this.showParticipants;
+
   }
 }

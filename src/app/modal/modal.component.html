@@ -1,11 +1,11 @@
-<div class="modal" (click)="close()">
-    <div class="modal-content">
+<div class="modal">
+    <div class="modal-content" tabindex=0 (blur)="close()">
       <span class="close_btn" (click)="close()"> &times; </span>
       <h1>{{ modalContent }}</h1>
       <h2>Ranking</h2>
       <a class="view_participant" (click)="toggleParticipants()">View All Participants</a>
   
-      <div *ngIf="!showParticipants">
+      <div>
         <div class="student">1.Serena: 92%</div>
         <div class="student">2.Faze: 90%</div>
         <div class="student">3.Sarah: 85%</div>
