@@ -7,12 +7,17 @@ import { RegisterComponent } from './section/register/register.component';
 import { ConversationComponent } from './section/conversation/conversation.component';
 
 
+import { QuizListComponent } from './quiz-list/quiz-list.component';
+import { MaterialListComponent } from './material-list/material-list.component';
+import { MaterialDetailsComponent } from './material-details/material-details.component';
 
 export const routes: Routes = [
     { path: "something", component: StudentMainPageComponent /* canActivate: [roleGuard], data: { roles: [Role.STUDENT] } */ },
     { path: "lecturer", component: LecturerMainPageComponent /* canActivate: [roleGuard], data: { roles: [Role.LECTURER] } */ },
     { path: "", component: RegisterComponent },
     { path: "lecturer-main", component: LecturerMainPageComponent },
-    { path: "conversation", component: ConversationComponent }
-
+    { path: "conversation", component: ConversationComponent },
+    { path: 'quiz', component: QuizListComponent },
+    { path: 'materials', component: MaterialListComponent },
+    { path: 'material-details/:title/:filename/:date', component: MaterialDetailsComponent}
 ];

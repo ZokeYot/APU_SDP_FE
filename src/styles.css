@@ -4,7 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
 div::-webkit-scrollbar {
-    display: none;
+  display: none;
 
 }
