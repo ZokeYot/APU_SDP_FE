@@ -1,0 +1,199 @@
+html, body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.top-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    color: white;
+    padding: 35px 20px;
+    position: relative;
+}
+
+.title-container {
+    display: flex;
+    justify-content: center;
+    background-color: #bfc9a6;
+    color: #333;
+    font-size: 30px;
+    padding: 3px;
+    position: relative;
+}
+
+.title {
+    font-size: 45px;
+    font-weight: bold;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.red-circle {
+    width: 55px;
+    height: 55px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    right: 20px;
+}
+
+.additional-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    color: #333;
+    font-size: 24px;
+}
+
+.page1, .page3 {
+    background-color: #666;
+    flex: 0 0 20%;
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+
+.page2, .page4 {
+    flex: 1;
+    background-color: #999;
+    padding: 15px;
+}
+
+.page3, .page4 {
+    border-top: 2px solid grey;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: nowrap;
+}
+
+.form-group label {
+    width: 250px;
+    padding-left: 30px;
+    flex: 0 0 250px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="date"],
+.form-group input[type="password"] {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-group input[type="radio"] {
+    display: none;
+}
+
+.form-group .gender-label {
+    margin-right: 20px;
+}
+
+.form-group .gender-input {
+    display: flex;
+}
+
+.form-group .gender-label {
+    padding: 8px 16px;
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    flex: 1;
+}
+
+.form-group input[type="radio"]:checked + .gender-label {
+    background-color: #007bff;
+    color: white;
+    border: 1px solid #007bff;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.buttons button {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100px;
+}
+
+.buttons .update-button {
+    background-color: #007bff;
+    color: white;
+}
+
+.buttons .back-button {
+    background-color: #6c757d;
+    color: white;
+}
+
+.buttons .back-button:hover {
+    background-color: #666;
+}
+
+.buttons-container {
+    background-color: grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 7px;
+}
+
+.additional-container {
+    width: 100%;
+}
+
+.page1, .page3 {
+    width: 20%;
+}
+
+.page2, .page4 {
+    width: 80%;
+}
+
+.buttons-container {
+    width: 100%;
+}
+
+.form-group label {
+    width: 144px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="date"],
+.form-group input[type="password"] {
+    width: calc(100% - 270px);
+}
+
+.buttons button {
+    width: 100px;
+}
