@@ -38,3 +38,24 @@
 #add_quiz:hover {
     background-color: #3e8e41;
 }
+
+#create-button {
+    margin-left: auto;
+    display: block;
+    margin-right: 100px;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    border: 2px solid green;
+    background-color: green;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+    width: fit-content;
+}
+
+#create-button:hover {
+    background-color: #4CAF50;
+    transition: ease-in-out;
+
+}
