@@ -22,19 +22,12 @@ header {
     color: #FFF;
 }
 
-.account_button {
-    background: #fd0000;
-    color: white;
-    font-weight: bold;
-    font-size: medium;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    border: 1px solid black;
+img {
+    margin-left: auto;
+    margin-right: 50px;
+    transform: translateY(-40px);
     width: 100px;
     height: 100px;
-    position: relative;
-    top: -40px;
-    margin-left: 1350px;
+    border-radius: 100%;
+
 }

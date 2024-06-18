@@ -13,10 +13,12 @@ export class StudentNavbarComponent implements OnInit {
   viewQuiz!: boolean;
   viewShop!: boolean;
   viewConversation!: boolean;
+  viewMaterial!: boolean;
 
-  quizUrl = ["/student-quiz", "/quiz/"];
+  quizUrl = ["/quiz", "/quiz/"];
   shopUrl = ["/shop", "/gacha", "/power-up"];
   conversationUrl = ["/conversation"];
+  materialUrl = ['/materials']
 
   constructor(private router: Router) {
 
@@ -30,6 +32,7 @@ export class StudentNavbarComponent implements OnInit {
         this.viewQuiz = this.quizUrl.find(url => (curUrl == url || curUrl.startsWith(url))) != null
         this.viewShop = this.shopUrl.find(url => url == curUrl) != null
         this.viewConversation = this.conversationUrl.find(url => url == curUrl) != null
+        this.viewMaterial = this.materialUrl.find(url => url == curUrl) != null
       }
     });
   }

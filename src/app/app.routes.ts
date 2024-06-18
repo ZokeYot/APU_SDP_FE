@@ -8,7 +8,6 @@ import { MaterialListComponent } from './section/material/material-list/material
 import { MaterialDetailsComponent } from './section/material/material-details/material-details.component';
 import { CreateQuizComponent } from './section/quiz/create-quiz/create-quiz.component';
 import { ConversationComponent } from './section/user/conversation/conversation.component';
-import { HomePageComponent } from './section/home-page/home-page.component';
 import { QuizComponent } from './section/quiz/quiz-detail/quiz.component';
 import { AttemptQuizComponent } from './section/quiz/attempt-quiz/attempt-quiz.component';
 import { QuizListComponent } from './section/quiz/quiz-list/quiz-list.component';
@@ -18,11 +17,11 @@ import { DeleteStudentComponent } from './section/quiz/delete-student/delete-stu
 import { ShopComponent } from './section/gaming/shop/shop.component';
 import { GahcaTitlesComponent } from './section/gaming/gahca-titles/gahca-titles.component';
 import { PowerUpComponent } from './section/gaming/power-up/power-up.component';
-import { LecMainPageComponent } from './section/lectuerer/lec-main-page/lec-main-page.component';
+import { LecMainPageComponent } from './section/lec-main-page/lec-main-page.component';
 
 export const routes: Routes = [
     { path: "register", component: RegisterComponent },
-    { path: "", component: HomePageComponent },
+    { path: "", component: LecMainPageComponent },
     { path: "login", component: LoginComponent },
     { path: "find", component: FindComponent },
     { path: "profile", component: ProfileComponent },

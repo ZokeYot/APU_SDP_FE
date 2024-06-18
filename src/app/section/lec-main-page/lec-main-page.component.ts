@@ -9,5 +9,6 @@ import { RouterModule } from '@angular/router';
   styleUrl: './lec-main-page.component.css'
 })
 export class LecMainPageComponent {
+  role: string = sessionStorage.getItem('role') as string
 
 }
