@@ -12,6 +12,7 @@ import { MaterialListComponent } from './section/lectuerer/material-list/materia
 import { MaterialDetailsComponent } from './section/lectuerer/material-details/material-details.component';
 import { CreateQuizComponent } from './section/lectuerer/create-quiz/create-quiz.component';
 import { ConversationComponent } from './section/conversation/conversation.component';
+import { LecMainPageComponent } from './section/lectuerer/lec-main-page/lec-main-page.component';
 
 export const routes: Routes = [
     { path: "register", component: RegisterComponent },
@@ -21,6 +22,7 @@ export const routes: Routes = [
     { path: "find", component: FindComponent },
     { path: "password", component: PasswordComponent },
     { path: "profile", component: ProfileComponent },
+    { path: "lec-main", component: LecMainPageComponent},
     { path: "update", component: UpdateComponent },
     { path: "", component: RegisterComponent },
     { path: "conversation", component: ConversationComponent },

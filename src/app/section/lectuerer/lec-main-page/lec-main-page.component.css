@@ -1,0 +1,74 @@
+#material-sec{
+    background-color: black;
+    height: 200px;
+    max-height: 200px;
+    overflow: hidden;
+    position: relative;
+
+}
+
+#material-sec::before {
+    content: "";
+    background-image: url("research.jpg");
+    background-position: center;
+    background-size: cover;
+    opacity: 0.3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+.tagline{
+    color: white;
+    font-weight: bolder;
+    font-size: 30px;
+    position: relative;
+    left: 575px;
+    top: 60px;
+    z-index: 2;
+}
+
+#highlight_learning{
+    color: #FF5733;
+}
+
+#highlight_material{
+    color: #2E86C1;
+}
+
+#add_mate{
+    height: 45px;
+    width: 125px;
+    padding: 10px;
+    background-color: green;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    position: relative;
+    left: 950px;
+    top: 8px;
+    z-index: 5;
+}
+
+#recent_quiz_sec{
+    overflow: hidden;
+}
+
+#recent_created_quiz{
+    color: white;
+    font-size: 23px;
+    position: relative;
+    top: 28px;
+    left: 10px;
+}
+
+#view_more{
+    color: white;
+    font-size: 15px;
+    position: relative;
+    left: 1350px;
+    top: 2px;
+    cursor: pointer;
+}
