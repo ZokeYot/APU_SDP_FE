@@ -18,7 +18,7 @@ import { DeleteStudentComponent } from './section/quiz/delete-student/delete-stu
 import { ShopComponent } from './section/gaming/shop/shop.component';
 import { GahcaTitlesComponent } from './section/gaming/gahca-titles/gahca-titles.component';
 import { PowerUpComponent } from './section/gaming/power-up/power-up.component';
-
+import { LecMainPageComponent } from './section/lectuerer/lec-main-page/lec-main-page.component';
 
 export const routes: Routes = [
     { path: "register", component: RegisterComponent },
@@ -26,13 +26,14 @@ export const routes: Routes = [
     { path: "login", component: LoginComponent },
     { path: "find", component: FindComponent },
     { path: "profile", component: ProfileComponent },
+    { path: "lec-main", component: LecMainPageComponent },
     { path: "update", component: UpdateComponent },
     { path: "conversation", component: ConversationComponent },
     { path: 'quiz', component: QuizListComponent },
     { path: 'materials', component: MaterialListComponent },
     { path: 'material-details/:title/:filename/:date', component: MaterialDetailsComponent },
     { path: 'create-quiz', component: CreateQuizComponent },
-    { path: 'home-page', component: HomePageComponent },
+    { path: 'home-page', component: LecMainPageComponent },
     { path: 'shop', component: ShopComponent },
     { path: "quiz/:id", component: QuizComponent },
     { path: "attempt-quiz/:id", component: AttemptQuizComponent },
