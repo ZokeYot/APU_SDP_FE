@@ -1,0 +1,49 @@
+<div class="bg-white w-[80%] h-fit mx-auto px-10 pt-5 py-3">
+   <div class="flex my-10 relative">
+        <button class="border-2 border-gray-500 h-[50px] bg-gray-500 py-3 px-5 text-xl font-bold text-white mr-auto ml-10 rounded-2xl"  
+        routerLink="/quiz">Back</button>
+
+     
+        <button *ngIf="role === 'student'" 
+        class="border-2 border-green-500 bg-green-500 py-3 px-5 text-xl font-bold text-white ml-auto mr-10 rounded-2xl "
+        (click)="join_quiz()">{{quizStatus}} </button>
+
+        <p *ngIf="quizStatus === 'Attempt'" class="absolute text-wrap w-[500px] text-sm text-red-500 right-0 top-20">*You can gain the gaming point by attempting the quiz multiple time, 
+            but only the first attempt's score will be record</p>
+      
+    
+        <div *ngIf="role === 'lecturer'" class="flex flex-col">
+            <button 
+            class="bg-orange-500  h-[50px] py-3 px-5 mb-5 text-xl font-bold text-white ml-auto mr-10 rounded-2xl hover:bg-orange-800"
+            (click)="update_quiz()">Update</button>
+
+            <div>
+                <button
+                class="bg-green-500  h-[50px]  py-3 px-5 font-bold text-white ml-auto mr-5 rounded-2xl hover:bg-green-800"
+                (click)="add_student()">Add Student</button>
+    
+                <button class="bg-red-500  h-[50px] text-wrap py-3 px-5 font-bold text-white ml-auto mr-5 rounded-2xl  hover:bg-red-800"
+                (click)="delete_student()">Remove Student</button>
+            </div>
+        </div>
+   </div>
+
+    <div class="flex p-5">
+        <img src="data:image/png;base64,{{quiz.thumbnail}}" class="w-[300px] h-[300px]" alt="">
+    
+        <div class="mx-10">
+            <p class="text-xl font-bold my-5">Title: <br> <span class="text-5xl">{{quiz.title}}</span></p>
+            <p class="text-xl font-bold my-5">Description: <br> <span class="text-3xl"> {{quiz.description}}</span></p>
+            <p class="text-xl font-bold my-5">Questions: <br> <span class="text-xl"> {{quiz.questions.length}} questions</span></p>
+            <p class="text-xl font-bold my-5">Creator : <br> <span class="text-xl"> {{quiz.description}}</span></p>
+            <p></p>
+        </div>
+    </div>
+
+    <div *ngIf="role === 'lecturer'">
+        <button (click)="show_questions()"><u>Show Questions</u></button>
+        <app-quiz-questions *ngIf="showQuestion" [questions]="quiz.questions"></app-quiz-questions>
+        <button (click)="show_submissions()"><u>Show Submissions</u></button>
+        <app-quiz-submissions *ngIf="showSubmission" [submissions]="submissions"></app-quiz-submissions>
+    </div>
+</div>

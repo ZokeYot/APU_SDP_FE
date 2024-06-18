@@ -1,0 +1,125 @@
+.top-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: black;
+    color: white;
+    padding: 40px 20px;
+}
+
+.title-container {
+    display: flex;
+    text-align: left;
+    position: relative;
+    color: black;
+    font-weight: bold;
+    padding: 0px 20px;
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.title {
+    font-size: 70px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.red-circle {
+    width: 60px;
+    height: 60px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    right: 20px;
+}
+
+.profile-container {
+    max-width: 80%;
+    width: 100%;
+    margin: 44px auto;
+    padding: 9px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+    flex-grow: 0;
+    margin-bottom: 0;
+
+}
+
+.profile-picture {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ddd;
+    margin: 0 auto 10px;
+    display: block;
+}
+
+.profile-info h2 {
+    margin: 10px 0;
+    font-size: 24px;
+}
+
+.profile-info p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.profile-info .label {
+    font-weight: bold;
+    display: inline-block;
+    width: 100px;
+    text-align: left;
+}
+
+.profile-details {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    border-top: 1px solid #eee;
+}
+
+.profile-details:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.buttons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100px;
+}
+
+.buttons .update-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.buttons .back-button {
+    background-color: #6c757d;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.buttons .back-button:hover {
+    background-color: #666;
+}

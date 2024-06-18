@@ -1,0 +1,31 @@
+<main>
+    <div *ngIf="!showMaterialDetails">
+      <button *ngIf="role === 'lecturer'" class="add-material" (click)="uploadFile()" >Add Material</button>
+      <input id="file-input" type="file" class="hidden" (change)="fileUploaded($event)">
+      
+      <div class="flex flex-wrap justify-around ">
+        <div *ngFor="let material of materials" class="bg-white flex items-center my-10 w-[400px] h-[150px] p-10 justify-around rounded-lg" 
+        (click)="viewMaterialDetail(material)">
+          
+          <div>
+            <img [src]="getFilePreview(material.name, material.type, material.file)" class="w-[100px] h-[100px]" >
+  
+          </div>
+        
+          <div class="ml-5">
+              <div class="font-bold">{{material.name}}</div>
+              <div class="text-sm">Upload Date : {{material.addedDate}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="showMaterialDetails">
+      <div class="mx-auto max-w-[1000px] flex">
+          <button class="bg-gray-600 text-white font-bold ml-10 py-2 px-5 rounded-xl -translate-y-3 overflow-hidden hover:bg-gray-800" 
+          (click)="backToList()">Back</button>
+      </div>
+      <app-material-details [material]="selectedMaterial"></app-material-details>
+    </div>
+  </main>
+  

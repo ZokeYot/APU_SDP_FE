@@ -1,0 +1,12 @@
+<div *ngIf="!displaySubmissions">
+    <div *ngFor="let submission of submissions" (click)="showSubmission(submission)" >
+        <img src="data:image/image;base64,{{submission.profile_picture}}" alt="">
+        <p>{{submission.studentName}}</p>
+        <p>{{submission.score}}</p>
+    </div>
+</div>
+
+<div *ngIf="displaySubmissions">
+    <button (click)="back()">Back</button>
+    <app-student-submission [submission]="selectedSubmission"></app-student-submission>
+</div>

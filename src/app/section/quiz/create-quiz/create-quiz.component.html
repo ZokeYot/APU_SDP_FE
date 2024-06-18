@@ -1,0 +1,64 @@
+<div class="p-5 bg-white">
+    <p class="text-black text-8xl">Create Quiz</p>
+    <div class="border-purple-600 border-2 rounded-lg p-5 my-5">
+        <p class="text-5xl" id="Quiz_Info">Quiz Info</p>
+        <div class="flex flex-col">
+            <label class="text-3xl" id="Quiz_Title">Quiz Title:</label>
+            <input type="text" placeholder="title" class="text-xl" [(ngModel)]="title" id="Quiz_Title_Input">
+        </div>
+        <div class="flex flex-col">
+            <label class="text-3xl" id="Quiz_Description">Quiz Description:</label>
+            <input type="text" placeholder="title" class="text-xl" [(ngModel)]="description" id="Quiz_Description_Input">
+        </div>
+        <label for="" id="Quiz_Thumbnail">Quiz Thumbnail</label>
+        <div class="border-2 border-black w-[100%] h-[600px] mx-auto bg-contain bg-center bg-no-repeat" [style.backgroundImage]="'url(' + imageUrl +')'" (click)="uploadFile()">
+            <input type="file" name="" id="thumbnail_upload" class="hidden" (change)="fileUploaded($event)">
+        </div>
+        
+    </div>
+
+
+    <div class="bg-gray-400 p-10 my-10" *ngFor="let question of questions; let i = index">
+        <div class="flex justify-end mr-5">
+            <label class='mr-3' for="type{{i}}">Question Type :</label>
+            <select id="type{{i}}" class="block" [(ngModel)]="question.type">
+                <option value="True and False">True and False</option>
+                <option value="Mutiple Choice">Mutiple Choice</option>
+                <option value="Coding Quesion">Coding Question</option>
+            </select>
+        </div>
+       
+
+        <div class="flex">
+            <label for="">Question : </label>
+            <textarea name="" id="" [(ngModel)]="question.question"></textarea>
+        </div>
+        
+        <div *ngIf="question.type === 'True and False'" class="flex  my-5">
+            <label for="answer{{i}}">Answer :</label>
+            <select name="" id="answer{{i}}" [(ngModel)]="question.answer">
+                <option value="">Select Your Answer</option>
+                <option value="True">True</option>
+                <option value="False">False</option>
+            </select>
+        </div>
+
+        <div *ngIf="question.type === 'Mutiple Choice' " class="flex flex-col w-[400px] my-5" >
+            <div>
+                <label for="answer{{i}}">Answer :</label>
+                <input class="mx-5" type="text" [value]="question.answer"  id="answer{{i}}" [(ngModel)]="question.answer">
+            </div>
+           
+           <div *ngFor="let option of question.options; let j = index; trackBy: trackByIndex" class="flex justify-between my-5">
+                <input placeholder="options {{j + 1}}" class="focus:bg-red-300"  type="text" [value]="j === 0 ? question.answer : ''" [(ngModel)]="question.options[j]"  [disabled]="isLocked(j)"> 
+           </div>
+           <button (click)="addOptions(question)">Add Options</button>
+        </div>
+    </div>
+    <div class="flex flex-col items-end">
+        <button (click)="addQuestion()" class="p-3 border-2 border-green-400 bg-green-400 w-[150px] my-3 mx-5">More Question</button>
+
+        <button (click)="submit()"  class="p-3 border-2 border-green-400 bg-green-400 w-[150px] my-3 mx-5">Submit</button>
+    </div>
+  
+</div>

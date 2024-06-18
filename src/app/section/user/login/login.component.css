@@ -1,0 +1,83 @@
+.container {
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
+}
+
+h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.login-box {
+    background-color: #e0e0e0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-box h2 {
+    background-color: #bfc9a6;
+    margin: -20px -20px 20px -20px;
+    padding: 10px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    font-size: 24px;
+    color: #333;
+}
+
+.login-box input[type="text"],
+.login-box input[type="password"] {
+    width: calc(100% - 24px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.login-box button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #999;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.login-box button:hover {
+    background-color: #666;
+}
+
+.register-text {
+    margin-top: 10px;
+    color: #333;
+}
+
+.register-link {
+    color: blue;
+    text-decoration: none;
+}
+
+.register-link:hover {
+    text-decoration: underline;
+}
+
+.find-account-link {
+    display: block;
+    margin-bottom: 10px;
+    color: #999;
+    text-decoration: none;
+    text-align: right;
+    margin-right: 12px;
+}
+
+.find-account-link:hover {
+    text-decoration: underline;
+}

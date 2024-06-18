@@ -1,0 +1,29 @@
+<div class="w-[90%]  mx-auto mb-5 p-3">
+    <nav class="flex justify-end h-[10%] items-end">
+        <a routerLink="/quiz">
+            <div [ngClass]="{
+            'w-[100px] h-[50px] mt-2 rounded-lg text-center bg-red-500 leading-[50px] mr-5' : true,
+            'hover:-translate-y-3 hover:bg-white transition-all ease-linear duration-150  hover:font-bold' : true,
+            'bg-white font-bold animate-float': viewQuiz,
+            }">Quiz
+            </div>
+        </a>
+
+        <a routerLink="/shop">
+            <div [ngClass]="{
+            'w-[100px] h-[50px] mt-2 rounded-lg text-center bg-red-500 leading-[50px] mr-5' : true,
+            'hover:-translate-y-3 hover:bg-white transition-all ease-linear duration-150 hover:font-bold' : true,
+            'bg-white font-bold animate-float': viewShop,
+            }">Shop</div> 
+        </a>
+ 
+        <a routerLink="/conversation">
+            <div [ngClass]="{
+            'w-[150px] h-[50px] mt-2 rounded-lg text-center bg-red-500 leading-[50px] mr-5' : true,
+            'hover:-translate-y-3 hover:bg-white transition-all ease-linear duration-150 hover:font-bold' : true,
+            'bg-white font-bold animate-float': viewConversation,
+            }">Conversation
+            </div>
+        </a>
+    </nav>
+</div>

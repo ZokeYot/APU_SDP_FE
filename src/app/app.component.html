@@ -1,4 +1,4 @@
-<div [ngClass]="{'w-screen min-h-screen h-fit bg-main-page' : loggedIn}">
+<div [ngClass]="{'w-screen min-h-screen h-fit bg-main-page box-border' : true}">
     <app-header *ngIf="loggedIn"></app-header>
     <app-student-navbar *ngIf="loggedIn && isStudent"></app-student-navbar>
     <app-lecturer-navbar *ngIf="loggedIn && isLecturer"></app-lecturer-navbar>

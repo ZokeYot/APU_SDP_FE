@@ -1,0 +1,41 @@
+<div class="bg-white w-screen">
+    <div class="">
+        <button>Back</button>
+        <img src="data:image/png;base64,{{quiz.thumbnail}}" class="w-[600px] h-[300px] mx-auto" alt="">
+    
+        <div class="mx-10">
+            <p class="text-xl font-bold my-5">Title: <br> <span class="text-5xl">{{quiz.title}}</span></p>
+        </div>
+    </div>
+
+    <div>
+        <h1>Questions: </h1>
+        <div *ngFor="let question of questions; let i = index">
+            <h1>Question {{i + 1}} <br> {{question.question}}</h1>
+            
+            <div *ngIf="question.type === 'Mutiple Choice'">
+                <ul>
+                    <li *ngFor="let option of question.content.options; let j = index">
+                        <label for="question{{i}}">
+                            <input type="radio" name="question{{ i }}" [(ngModel)]="question.content.response" [value]="option.option" required>
+                            {{option.option}}
+                        </label>
+                    </li>
+                </ul>
+            </div>
+
+            <div *ngIf="question.type === 'True and False'">
+                <label for="">
+                    <input type="radio" name="question{{ i }}" id="question{{i}}" value="True" [(ngModel)]="question.content.response" required>
+                    True
+                </label>
+                <label for="">
+                    <input type="radio" name="question{{ i }}" id="question{{i}}"  value="False" [(ngModel)]="question.content.response" required>
+                    False
+                </label>
+            </div>
+        </div>
+
+        <button (click)="submit()">Complete</button>
+    </div>
+</div>

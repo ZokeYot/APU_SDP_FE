@@ -1,0 +1,45 @@
+<div class="flex flex-col">
+    <a routerLink="/home-page">
+        <div class="title">Testy</div>
+    </a>
+
+    
+    <div class="profile-container">
+        <a routerLink="/profile">
+            <div class="title-container">
+                <div class="page">User Profile</div>
+            </div>
+        </a> 
+
+        <img [src]="imageUrl" alt="Profile Picture" class="profile-picture">
+        <div class="profile-info">
+            <h2></h2>
+        </div>
+        <div *ngIf="role === 'student'" class="profile-details">
+            <span class="label">Title</span>
+            <span>{{user.title}}</span>
+        </div>
+
+        <div class="profile-details">
+            <span class="label">Name</span>
+            <span>{{user.name}}</span>
+        </div>
+        <div class="profile-details">
+            <span class="label">Email Address</span>
+            <span>{{user.email}}</span>
+        </div>
+        <div class="profile-details">
+            <span class="label">DOB</span>
+            <span>{{user.dob}}</span>
+        </div>
+        <div class="profile-details">
+            <span class="label">Gender</span>
+            <span>{{user.gender}}</span>
+        </div>
+        <div class="buttons">
+            <button class="back-button" routerLink="/home-page">Back</button>
+            <button class="update-button" routerLink="/update">Edit</button>
+        </div>
+    </div>
+</div>    
+   

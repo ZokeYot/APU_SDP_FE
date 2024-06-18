@@ -1,0 +1,7 @@
+<div class="flex justify-end my-10">
+    <p class="font-bold text-white text-3xl mr-10 ">Gaming Point : {{user.gaming_point}}</p>
+</div>
+<div class="wheel-container py-10">
+    <canvas id="wheel" width="500" height="500"></canvas>
+    <button id="spin-btn" (click)="drawTitle()" [disabled]="isSpinning">Spin</button>
+</div>

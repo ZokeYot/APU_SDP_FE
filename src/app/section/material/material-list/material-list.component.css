@@ -1,0 +1,48 @@
+.materials {
+  display: grid;
+  box-sizing: border-box;
+  margin: 30px;
+  margin-top: 30px;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 100px 90px;
+}
+
+.material {
+  text-decoration: none;
+  display: block;
+  background-color: #b5c18e;
+  color: black;
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 18px;
+  height: 60px;
+}
+
+.material span:first-child {
+  display: block;
+  font-weight: bold;
+}
+
+.material span:last-child {
+  display: block;
+  margin-top: 5px;
+  font-size: 14px;
+  color: #666;
+}
+
+.add-material {
+  margin-top: 50px;
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 20px;
+  padding-bottom: 25px;
+  height: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+  left: 1000px;
+}
+
+.add-material:hover {
+  background-color: #3e8e41;
+}

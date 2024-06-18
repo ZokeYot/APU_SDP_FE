@@ -1,12 +1,14 @@
-import { Role } from "./role";
+export interface Student {
+    id: string;
+    name: string;
+    email: string;
+    gender: string;
+    profile_picture: string;
+    dob: string;
+    title: string;
+    gaming_point: string;
+}
 
-export class User {
-    id!: number;
-    name!: string
-    password!: string
-    email!: string
-    gender!: string
-    profile_picture!: string
-    dob!: string
-
+export interface Participant {
+    studentID: string
 }

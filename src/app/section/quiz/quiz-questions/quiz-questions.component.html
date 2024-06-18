@@ -1,0 +1,12 @@
+<div *ngFor="let question of questions" class="border-2 border-black w-[80%] p-10 text-3xl">
+    <p>Question : {{question.question}}</p>
+    <p>Answer : {{question.content.answer}}</p>
+    <p>Type : {{question.type}}</p>
+
+    <div *ngIf="question.type === 'Mutiple Choice'">
+        <p>Options :</p>
+        <div *ngFor="let option of question.content.options">
+            <p>{{option.option}}</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<main>
+    <div class="material-container ">
+        <div class="w-fit ml-auto">
+            <button class="bg-green-500 text-white font-bold mx-10 py-2 px-5 rounded-lg hover:bg-green-800"
+            (click)="download(material)">Download</button>
+            <button *ngIf="role === 'lecturer'" class="bg-red-500 text-white font-bold mx-10 py-2 px-5 rounded-lg hover:bg-red-800"
+            (click)="delete(material.materialID)">Delete</button>
+        </div>
+        <div class="flex items-center">
+            <img [src]="getFilePreview(material.name, material.type, material.file)" class="w-[300px] h-[300px] ml-10 mt-10" >
+            <div class="ml-10 ">
+                <div class="my-10">
+                    <p class="text-3xl font-bold ">Material Name:</p>
+                    <p class="text-xl font-bold">{{material.name}}</p>
+                </div>
+    
+                <div class="my-10">
+                    <p class="text-2xl font-bold ">Upload Date: </p>
+                    <p  class="text-xl font-bold">{{material.addedDate}}</p>
+                </div>
+               
+                <div class="my-10">
+                    <p class="text-2xl font-bold ">Upload By : </p>
+                    <p  class="text-xl font-bold">{{ownerName}}</p>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</main>
+

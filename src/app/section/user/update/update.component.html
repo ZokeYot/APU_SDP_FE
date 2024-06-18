@@ -1,0 +1,52 @@
+<div class="bg-white  w-[80%] pt-5 pb-3 px-10 mx-auto">
+    <div class="flex">
+      <p class="text-5xl font-bold mb-10 mt-5 mx-10">Update Profile</p>
+      <button routerLink="/home-page" class="ml-auto mr-10 text-2xl font-bold mb-5 bg-green-500 w-[100px] h-[50px] rounded-xl ">Back</button>
+    </div>
+    <div class="flex justify-around">
+      <div class="w-[40%]">
+        <img [src]="imageUrl" alt="" class="w-[250px] h-[250px] rounded-full border-2 border-black my-5 mx-auto" (click)="uploadFile()">
+        <input type="file" class="hidden" id="profile_picture" (change)="fileUploaded($event)">
+        <p class="my-5 text-center">Profile Picture</p>
+      </div>
+  
+      <div class="flex flex-col justify-between w-[60%]">
+  
+        <div class="flex flex-col my-5">
+          <label for="name">Name</label>
+          <input type="text" name="" id="name" [(ngModel)]="name">
+        </div>
+  
+        <div class="flex flex-col  my-5" *ngIf="isStudent">
+          <label for="title">Title</label>
+          <select name="" id="title" [(ngModel)]="new_title">
+            <option [value]="old_title">{{old_title}}</option>
+            <option *ngFor="let title of titles">{{title.title}}</option>
+          </select>
+        </div>
+  
+        <div class="flex justify-between  my-5">
+          <label for="gender">Gender</label>
+          Male<input type="radio" name="gender" id="male" value="MALE" [(ngModel)]="gender">
+          Female<input type="radio" name="gender" id="female" value="FEMALE"  [(ngModel)]="gender">
+        </div>
+  
+        <div class="flex flex-col  my-5">
+          <label for="dob">DOB</label>
+          <input type="date" name="dob"  id="dob" [(ngModel)]="dob">
+        </div>
+  
+        <div class="flex flex-col  my-5">
+          <label for="old-password">Old-Password</label>
+          <input type="password" name="password"  id="old-password" [(ngModel)]="old_password" (input)="checkOldPassword()">
+          <p class="text-red-500" *ngIf="errorMessage">You have to enter the old password!!</p>
+        </div>
+  
+        <div class="flex flex-col  my-5">
+          <label for="new-password">New-Password</label>
+          <input type="password" name="password"  id="new-password" [(ngModel)]="new_password" (input)="checkOldPassword()">
+        </div>
+      </div>
+    </div>
+    <button (click)="submit()" class="rounded-lg bg-orange-500 text-white text-2xl p-3 block ml-auto mr-10 mt-10 mb-5" >Submit</button>
+</div>

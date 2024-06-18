@@ -1,11 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterModule, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './section/header/header.component';
-import { LecturerNavbarComponent } from './section/lectuerer/navbar/navbar.component';
+import { LecturerNavbarComponent } from './section/navbar/lecturer-navbar/lecturer-navbar.component';
 import { FormsModule } from '@angular/forms';
-import { StudentNavbarComponent } from "./section/student/navbar/navbar.component";
-
+import { StudentNavbarComponent } from './section/navbar/student-navbar/student-navbar.component';
 
 @Component({
   selector: 'app-root',
@@ -14,11 +13,36 @@ import { StudentNavbarComponent } from "./section/student/navbar/navbar.componen
   styleUrl: './app.component.css',
   imports: [HeaderComponent, StudentNavbarComponent, RouterModule, CommonModule, RouterOutlet, FormsModule, RouterModule, LecturerNavbarComponent]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'SDP_FE';
-  loggedIn = true;
-  isStudent = false;
-  isLecturer = true;
+
+  loggedIn: boolean = true;
+  isStudent: boolean = true;
+  isLecturer: boolean = true;
+
+  constructor(private router: Router) {
+
+  }
+
+  ngOnInit() {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        const curUrl = this.router.url;
+        this.loggedIn = !(curUrl === '/register' || curUrl === '/login' || curUrl === "/profile" || curUrl === "/update-profile");
+
+        console.log(curUrl)
+        if (this.loggedIn) {
+          this.isStudent = sessionStorage.getItem('role') === 'student';
+          this.isLecturer = sessionStorage.getItem('role') === 'lecturer';
+        }
+
+        if (curUrl.startsWith("/attempt-quiz")) {
+          this.isStudent = false;
+        }
+
+      }
+    });
+  }
 
 
 

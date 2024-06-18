@@ -1,0 +1,21 @@
+<button routerLink="/quiz/{{quizID}}" 
+class="block mr-auto ml-10 text-white py-2 px-5 rounded-lg bg-gray-500 font-bold hover:bg-gray-800">Back</button>
+
+<button (click)="deleteStudent()" 
+class="block ml-auto mr-10 text-white py-2 px-5 rounded-lg bg-green-500 font-bold hover:bg-green-800">Remove Student</button>
+
+<div class="flex flex-wrap justify-around">
+   <div *ngFor="let student of students" (click)="toggleSelected(student)" >
+      <div [ngClass]="{
+      'flex my-10 w-[500px] h-[200px] rounded-xl' : true,
+      'bg-white' : !(findIndex(student.id) !== -1),
+      'bg-gray-500' : findIndex(student.id) !== -1
+      }">
+           <img src="data:image/*;base64,{{student.profile_picture}}" class="w-[200px] h-[150px] my-auto ml-10" alt="">
+            <div class="my-auto ml-10">
+               <p class="text-2xl font-bold">{{student.name}}</p>
+               <p class="text-md font-bold">{{student.title}}</p>
+            </div>
+      </div>
+   </div>
+</div>
