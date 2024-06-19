@@ -18,6 +18,7 @@ import { ShopComponent } from './section/gaming/shop/shop.component';
 import { GahcaTitlesComponent } from './section/gaming/gahca-titles/gahca-titles.component';
 import { PowerUpComponent } from './section/gaming/power-up/power-up.component';
 import { LecMainPageComponent } from './section/lec-main-page/lec-main-page.component';
+import { StudentMainPageComponent } from './section/student-main-page/student-main-page.component';
 
 export const routes: Routes = [
     { path: "register", component: RegisterComponent },
@@ -33,6 +34,7 @@ export const routes: Routes = [
     { path: 'material-details/:title/:filename/:date', component: MaterialDetailsComponent },
     { path: 'create-quiz', component: CreateQuizComponent },
     { path: 'home-page', component: LecMainPageComponent },
+    { path: 'student-home-page', component: StudentMainPageComponent },
     { path: 'shop', component: ShopComponent },
     { path: "quiz/:id", component: QuizComponent },
     { path: "attempt-quiz/:id", component: AttemptQuizComponent },
