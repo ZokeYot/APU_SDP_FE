@@ -24,6 +24,7 @@ import { AddGroupMemberComponent } from './section/conversation/add-group-member
 import { DeleteGroupMemberComponent } from './section/conversation/delete-group-member/delete-group-member.component';
 import { StudentMainPageComponent } from './section/home/student-main-page/student-main-page.component';
 import { HomePageComponent } from './section/home/home-page/home-page.component';
+import { StudentMainPageComponent } from './section/student-main-page/student-main-page.component';
 
 export const routes: Routes = [
     { path: "register", component: RegisterComponent },
