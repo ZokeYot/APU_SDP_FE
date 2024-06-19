@@ -14,7 +14,7 @@ export class ProfileComponent implements OnInit {
   user!: any;
   imageUrl  !: string;
   role !: string;
-
+  amount !: string;
   constructor(private service: TestyService, private router: Router) {
 
   }
@@ -36,12 +36,19 @@ export class ProfileComponent implements OnInit {
         this.user = data;
         this.imageUrl = "data:image/jpeg;base64," + this.user.profile_picture
         this.role = sessionStorage.getItem('role') as string
+        this.amount = sessionStorage.getItem('item-amount') as string
+
       }
     )
   }
 
   back() {
     this.router.navigateByUrl('/home-page')
+  }
+
+  logout() {
+    if (confirm("Are u sure to logout ?? "))
+      this.router.navigateByUrl('/login')
   }
 
 }

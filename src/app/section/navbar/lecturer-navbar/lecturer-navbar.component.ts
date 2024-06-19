@@ -17,7 +17,7 @@ export class LecturerNavbarComponent implements OnInit {
 
   quizUrl = ["/quiz", "/create-quiz"];
   materialUrl = ["/materials"];
-  conversationUrl = ["/conversation"]
+  conversationUrl = ["/conversation", "/new-conversation", "/new-group"]
   constructor(private router: Router) {
 
   }

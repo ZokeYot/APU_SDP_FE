@@ -24,6 +24,7 @@ export class QuizComponent {
   submissions !: Submission[];
   showQuestion: boolean = false
   showSubmission: boolean = true
+  showLeaderboard: boolean = true;
 
 
   constructor(private service: TestyService, private route: ActivatedRoute, private router: Router) {
@@ -32,7 +33,10 @@ export class QuizComponent {
     this.userID = sessionStorage.getItem('id') as string
     this.get_quiz();
     this.check_quiz();
-    this.service.get_quiz_submission(this.quizID).subscribe(data => this.submissions = data)
+    this.service.get_quiz_submission(this.quizID).subscribe(data => {
+      this.submissions = data
+      this.submissions.sort((a, b) => +a.score - +b.score)
+    })
   }
 
   get_quiz() {
@@ -60,8 +64,19 @@ export class QuizComponent {
         },
         error: () => alert("Failed to join quiz")
       })
-    else
-      this.router.navigateByUrl(`/attempt-quiz/${this.quizID}`)
+    else {
+      const amount = Number.parseInt(sessionStorage.getItem('item-amount') as string)
+      if (amount > 0) {
+        if (confirm('It seems u have the PowerUp Boost item. Would u like to use it ? It can double up the gaming point you gain in the quiz')) {
+          this.router.navigate([`/attempt-quiz/${this.quizID}`], {
+            queryParams: { use: 'yes' }
+          })
+        }
+      } else {
+        this.router.navigateByUrl(`/attempt-quiz/${this.quizID}`)
+      }
+
+    }
   }
 
   show_questions() {
@@ -72,8 +87,27 @@ export class QuizComponent {
     this.showSubmission = !this.showSubmission
   }
 
+  show_leaderboard() {
+    this.showLeaderboard = !this.showLeaderboard
+  }
+
   update_quiz() {
     this.router.navigateByUrl(`/quiz/update/${this.quizID}`)
+  }
+
+  delete_quiz() {
+    if (confirm('Are u sure want to delele the quiz ?? All the submisions will be remove also')) {
+      this.service.delete_quiz(this.quizID).subscribe({
+        next: () => {
+          alert('Quiz deleted successfully')
+          this.router.navigateByUrl('/quiz')
+        },
+        error: () => {
+          alert('Failed to delete quiz')
+          this.router.navigateByUrl('/quiz')
+        }
+      })
+    }
   }
 
   add_student() {

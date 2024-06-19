@@ -80,17 +80,29 @@ export class GahcaTitlesComponent {
     }
   }
 
+  private shuffleArray(array: any[]): void {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+
   private createChart(): void {
     const wheelElement = document.getElementById('wheel') as HTMLCanvasElement;
+
+    console.log(this.rotationValues)
+    this.shuffleArray(this.rotationValues);
+    console.log(this.rotationValues)
+
 
     this.wheel = new Chart(wheelElement, {
       plugins: [ChartDataLabels],
       type: 'pie',
       data: {
-        labels: ['Python Puzzles', 'Code Quest', 'Syntax Safari', 'Loop Legends',
-          'Function Frenzy', 'Object-Oriented Odyssey', 'Data Structure Dash', 'Variable Voyage',
-          'Debudding Dungeon', 'Algorithm Adventures', 'Code Crafters', 'Scripting Saga',
-          'Byte Battle', 'Function Forge', 'Coding Chronicles'],
+        labels: ['Python\nPuzzles', 'Code\nQuest', 'Syntax\nSafari', 'Loop\nLegends',
+          'Function\nFrenzy', 'Object-Oriented\nOdyssey', 'Data Structure\nDash', 'Variable\nVoyage',
+          'Debudding\nDungeon', 'Algorithm\nAdventures', 'Code\nCrafters', 'Scripting\nSaga',
+          'Byte\nBattle', 'Function\nForge', 'Coding\nChronicles'],
         datasets: [
           {
             backgroundColor: this.pieColors,
@@ -114,7 +126,7 @@ export class GahcaTitlesComponent {
               }
               return '';
             },
-            font: { size: 14 },
+            font: { size: 10 },
             clip: true,
             textAlign: 'center'
           },
@@ -123,21 +135,21 @@ export class GahcaTitlesComponent {
     });
   }
 
-  private valueGenerator(angleValue: number): void {
+  private valueGenerator(stopAngle: number): void {
     for (let i of this.rotationValues) {
-      if (angleValue >= i.minDegree && angleValue <= i.maxDegree) {
+      if (stopAngle >= i.minDegree && stopAngle <= i.maxDegree) {
         this.finalValue = i.value;
         this.isSpinning = false;
         this.service.add_user_title(this.userID, this.finalValue).subscribe({
           next: (response) => {
-            alert(`Congrat !! You got the ${this.finalValue} title !! ${response.success}`)
-            window.location.reload()
+            alert(`Congrats! You got the ${this.finalValue} title! ${response.success}`);
+            window.location.reload();
           },
           error: (response) => {
-            alert(response.error.failure)
-            window.location.reload()
+            alert(response.error.failure);
+            window.location.reload();
           }
-        })
+        });
         break;
       }
     }
@@ -149,27 +161,24 @@ export class GahcaTitlesComponent {
     this.isSpinning = true;
     this.finalValue = 'Good Luck!';
 
-    let count = 0;
-    let resultValue = 101;
-    let randomDegree = Math.floor(Math.random() * 356);
+    // Fixed stop angle (e.g., middle of the first segment)
+    const selectedSegment = this.rotationValues[0];
+    console.log(selectedSegment)
+    const stopAngle = (selectedSegment.minDegree + selectedSegment.maxDegree) / 2;
+
+    const totalRotation = 5 * 360 + stopAngle; // 5 full rotations + stop angle
+    const initialRotation = (this.wheel?.options as CustomChartOptions).rotation || 0;
+    let currentRotation = initialRotation;
 
     const rotationInterval = setInterval(() => {
-      if (!this.wheel) return;
-
-      const currentRotation = (this.wheel.options as CustomChartOptions).rotation ?? 0;
-      (this.wheel.options as CustomChartOptions).rotation = currentRotation + resultValue;
-      this.wheel.update();
-
-      if ((this.wheel.options as CustomChartOptions).rotation >= 360) {
-        count += 1;
-        resultValue -= 5;
-        (this.wheel.options as CustomChartOptions).rotation = 0;
-      } else if (count > 15 && (this.wheel.options as CustomChartOptions).rotation === randomDegree) {
-        this.valueGenerator(randomDegree);
+      currentRotation += 10; // Rotation speed
+      if (currentRotation >= totalRotation) {
         clearInterval(rotationInterval);
-        count = 0;
-        resultValue = 101;
+        currentRotation = totalRotation;
+        this.valueGenerator(stopAngle);
       }
+      (this.wheel?.options as CustomChartOptions).rotation = currentRotation % 360;
+      this.wheel?.update();
     }, 10);
   }
 }

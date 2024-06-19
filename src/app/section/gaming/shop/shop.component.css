@@ -1,4 +1,4 @@
-#box{
+#box {
     width: 350px;
     height: 450px;
     float: left;
@@ -9,10 +9,10 @@
     background-color: #ffffff;
 }
 
-#footer{
+#footer {
     font-size: 35px;
     text-align: center;
     font-family: sans-serif, Curlz MT;
     position: inherit;
-    margin-top: 115%;
+
 }

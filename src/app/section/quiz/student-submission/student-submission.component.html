@@ -1,3 +1,22 @@
-<div>
-    
+<div class="p-5 shadow-black shadow-md my-5">
+    <div class="flex items-center">
+        <img src="data:image/*;base64,{{submission.profile_picture}}" alt="" class="w-[200px] h-[200px]">
+
+        <div class="ml-10">
+            <p class="text-2xl font-bold">Submission ID : {{submission.submissionID}}</p>
+            <p class="text-2xl font-bold">Student Name : {{submission.studentName}}</p>
+            <p class="text-2xl font-bold">Submitted Date :  {{submission.completedDate}}</p>
+            <p class="text-2xl font-bold">Quiz Score :  {{submission.score}}</p>
+        </div>
+    </div>
+    <h1 class="text-3xl mt-5 font-bold">Response : </h1>
+    <div *ngFor="let question of submission.response">
+        <div class="border-2 border-black bg-whote shadow-black shadow-lg my-5 p-5">
+            <p class="text-xl font-bold">Question : {{question.question}}</p>
+            <p class="text-xl font-bold">Question Type : {{question.type}}</p>
+            <p class="text-xl font-bold">Answer : {{question.content.answer}}</p>
+            <p class="text-xl font-bold">Student Reponse : {{question.content.response}}</p>
+        </div>
+    </div>
+   
 </div>

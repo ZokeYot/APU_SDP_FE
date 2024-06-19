@@ -17,7 +17,7 @@ export class StudentNavbarComponent implements OnInit {
 
   quizUrl = ["/quiz", "/quiz/"];
   shopUrl = ["/shop", "/gacha", "/power-up"];
-  conversationUrl = ["/conversation"];
+  conversationUrl = ["/conversation", "/new-conversation", "/new-group"];
   materialUrl = ['/materials']
 
   constructor(private router: Router) {

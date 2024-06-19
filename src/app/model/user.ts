@@ -7,6 +7,7 @@ export interface Student {
     dob: string;
     title: string;
     gaming_point: string;
+    item_amount: string;
 }
 
 export interface Participant {

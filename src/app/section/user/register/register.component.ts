@@ -24,10 +24,45 @@ export class RegisterComponent {
   lastName !: string;
   email !: string;
   password !: string;
+  confirmPassword !: string;
+  checkPassword: boolean = false
   dob !: string;
   gender !: string;
   lectureKey !: string;
   errorMessage !: string;
+
+  checkPasswordMatch() {
+
+    if (this.password !== this.confirmPassword)
+      this.checkPassword = true
+    else
+      this.checkPassword = false
+  }
+
+
+  checkForm() {
+    if (!this.firstName)
+      alert('You have to atleast filled up the first name field !!')
+    else if (!this.email)
+      alert('You have to filled up the email address field !! ')
+    else if (!this.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/))
+      alert('Incorrect email format !!')
+    else if (!this.password)
+      alert('Password field cannot be empty !!')
+    else if (!this.confirmPassword)
+      alert('The confirm password filed cannot be empty !!')
+    else if (this.checkPassword)
+      alert('The password does not match !!')
+    else if (!this.dob)
+      alert('The dob field cannot be empty !! ')
+    else if (!this.gender)
+      alert('The gender must be select !! ')
+    else if (!this.profile_picture)
+      alert('How about upload a profile picture ??')
+    else
+      this.register()
+
+  }
 
 
 
@@ -58,12 +93,16 @@ export class RegisterComponent {
   fileUploaded(event: any) {
     const file = event.target.files[0];
     if (file) {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        this.imageUrl = reader.result as string;
-        this.profile_picture = this.imageUrl.split(',')[1];
-      };
+      this.convertFile(file)
     }
+  }
+
+  convertFile(file: any) {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      this.imageUrl = reader.result as string;
+      this.profile_picture = this.imageUrl.split(',')[1];
+    };
   }
 }

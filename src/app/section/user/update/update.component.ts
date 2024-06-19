@@ -31,6 +31,7 @@ export class UpdateComponent {
   constructor(private service: TestyService, private router: Router) {
     this.userID = sessionStorage.getItem('id') as string;
     this.isStudent = sessionStorage.getItem('role') === 'student'
+
     this.errorMessage = true;
   }
   ngOnInit(): void {

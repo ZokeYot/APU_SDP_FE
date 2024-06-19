@@ -1,11 +1,31 @@
-<div *ngFor="let conversation of conversations" class="border-2 border-black bg-white flex py-5" 
-(click)="conversationSelected(conversation)">
-    <img src="data:image/*;base64,{{conversation.profile_picture}}" alt="">
-    <div>{{conversation.name}}</div>
-</div>
-
-<div *ngFor="let groupConversation of groupConversations" class="border-2 border-black bg-white flex py-5 "
- (click)="conversationSelected(groupConversation)">
-    <img src="data:image/*;base64,{{groupConversation.profile_picture}}" alt="">
-    <div>{{groupConversation.name}}</div>
+<div class="relative">
+    <div class="h-[150px] flex items-center justify-between pl-2 top-0 sticky z-10 bg-gray-700 border-gray-900">
+        <div class="flex text-2xl font-bold text-white">
+            <p>Conversations</p>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="ml-3 size-10">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.172 48.172 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
+            </svg>
+        </div>
+        <div class="ml-10">
+            <button routerLink="/new-group"
+            class="bg-green-500 hover:bg-green-800 z-0 text-white h-fit font-bold py-2 px-2 mr-10 rounded-lg my-3">Create Group</button>
+            <button routerLink="/new-conversation"
+            class="bg-green-500 hover:bg-green-800 z-0 text-white h-fit font-bold py-2 px-2 mr-10 rounded-lg">Find User</button>
+        </div>
+    </div>
+    
+    <div class="overflow-y-scroll h-[calc(100vh-100px)]">
+        <div *ngFor="let conversation of conversations" class="border-2 border-black bg-white flex py-5 rounded-lg items-center mb-[2px]" 
+            (click)="conversationSelected(conversation)">
+            <img src="data:image/*;base64,{{conversation.profile_picture}}" alt="" class="w-[75px] h-[75px] rounded-full">
+            <div class="ml-5 font-bold text-xl">{{conversation.name}}</div>
+        </div>
+    
+        <div *ngFor="let groupConversation of groupConversations" class="border-2 border-black bg-white flex py-5 rounded-lg items-center mb-[2px]"
+            (click)="conversationSelected(groupConversation)">
+            <img src="data:image/*;base64,{{groupConversation.profile_picture}}" alt="" class="w-[75px] h-[75px] rounded-full">
+            <div class="ml-5 font-bold text-xl">(Group) {{groupConversation.name}}</div>
+        </div>
+    </div>
+    
 </div>

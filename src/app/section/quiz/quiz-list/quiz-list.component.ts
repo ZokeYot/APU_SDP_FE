@@ -11,15 +11,20 @@ import { Router, RouterModule } from '@angular/router';
   styleUrl: './quiz-list.component.css'
 })
 export class QuizListComponent {
-  quizzes !: any[]
+  quizzes: any[] = []
   role: string = sessionStorage.getItem('role') as string
+  filterQuizzes = [...this.quizzes]
 
   constructor(private service: TestyService, private router: Router) {
     this.service.get_all_quiz().subscribe(data => this.quizzes = data)
   }
 
-  showQuiz(quizID: string) {
-
+  searchQuiz(event: Event) {
+    const inputElement = event.target as HTMLInputElement
+    const searchValue = inputElement.value
+    this.filterQuizzes = this.quizzes.filter(quiz =>
+      quiz.title.toLowerCase().includes(searchValue.toLowerCase())
+    )
   }
 
 }

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { TestyService } from '../../../service/testy.service';
 import { MaterialDetailsComponent } from "../material-details/material-details.component";
 import { Material } from '../../../model/material';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { Material } from '../../../model/material';
   standalone: true,
   templateUrl: './material-list.component.html',
   styleUrl: './material-list.component.css',
-  imports: [CommonModule, MaterialDetailsComponent]
+  imports: [CommonModule, MaterialDetailsComponent, FormsModule]
 })
 export class MaterialListComponent {
   file !: File;
@@ -20,12 +21,23 @@ export class MaterialListComponent {
   materials: Material[] = []
   selectedMaterial: any;
   showMaterialDetails: boolean = false;
+  searchQuery !: string
+
+  filteredMaterials = [...this.materials]
 
   constructor(private router: Router, private service: TestyService) {
     if (this.role == "student")
       this.getAllMaterials()
     else
       this.getLecturerMaterials()
+  }
+
+  searchMaterial(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    const searchValue = inputElement.value
+    this.filteredMaterials = this.materials.filter(material =>
+      material.name.toLowerCase().includes(searchValue.toLowerCase())
+    )
   }
 
   getFilePreview(name: string, type: string, file: string) {

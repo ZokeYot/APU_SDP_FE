@@ -22,7 +22,7 @@ export class QuizSubmissionsComponent {
   }
 
   back() {
-    this.displaySubmissions = true;
+    this.displaySubmissions = false;
     this.selectedSubmission = null
   }
 

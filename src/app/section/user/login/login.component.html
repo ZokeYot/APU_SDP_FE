@@ -3,9 +3,8 @@
     <h1>Testy</h1>
     <div class="login-box">
         <h2>Welcome Back</h2>
-        <input type="text" placeholder="Username" [(ngModel)]="email">
+        <input type="text" placeholder="Email Address" [(ngModel)]="email">
         <input type="password" placeholder="Password" [(ngModel)]="password">
-        <a routerLink="/find" class="find-account-link">Forgot Password?</a>
         <button (click)="login()">Log in</button>
         <p class="register-text">Don't have an account? <a routerLink="/register" class="register-link">Register</a></p>
     </div>

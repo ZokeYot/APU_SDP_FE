@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Message, UserInfo } from '../model/conversation';
+import { Conversation, GroupConversation, Message, UserInfo } from '../model/conversation';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +9,19 @@ import { Message, UserInfo } from '../model/conversation';
 export class TestyService {
 
   baseUrl: string = "http://localhost:8000";
+  blob_data: any;
 
 
   constructor(private http: HttpClient) {
 
+  }
+
+  store_blob_data(data: any) {
+    this.blob_data = data
+  }
+
+  get_blob_data() {
+    return this.blob_data
   }
 
 
@@ -27,6 +36,10 @@ export class TestyService {
     console.log(registerData)
     return this.http.post<any>(`${this.baseUrl}/user/register`, registerData)
 
+  }
+
+  get_all_user(): Observable<UserInfo[]> {
+    return this.http.get<any>(`${this.baseUrl}/user/all`)
   }
 
   get_profile(userID: string): Observable<UserInfo> {
@@ -72,15 +85,19 @@ export class TestyService {
   }
 
   add_quiz_participants(quizID: string, participants: any) {
-    return this.http.post<any>(`${this.baseUrl}/quiz/add`, { quizID, participants })
+    return this.http.post<any>(`${this.baseUrl}/quiz/add-participant`, { quizID, participants })
   }
 
   delete_quiz_participants(quizID: string, participants: any) {
-    return this.http.post<any>(`${this.baseUrl}/quiz/delete`, { quizID, participants })
+    return this.http.post<any>(`${this.baseUrl}/quiz/delete-participant`, { quizID, participants })
   }
 
   join_quiz(quizID: string, userID: string) {
     return this.http.post<any>(`${this.baseUrl}/quiz/join`, { quizID, userID })
+  }
+
+  delete_quiz(quizID: string) {
+    return this.http.post<any>(`${this.baseUrl}/quiz/delete`, { quizID })
   }
 
   // Submission Relate Service
@@ -122,13 +139,17 @@ export class TestyService {
     return this.http.post<any>(`${this.baseUrl}/game-title/add`, { userID, title })
   }
 
-  buy_item(userID: any, items: any) {
-    return this.http.post<any>(`${this.baseUrl}/game-item/buy`, { userID, items })
+  buy_item(userID: any, amount: any) {
+    return this.http.post<any>(`${this.baseUrl}/game-item/buy`, { userID, amount })
+  }
+
+  use_item(userID: any) {
+    return this.http.post<any>(`${this.baseUrl}/game-item/use`, { userID })
   }
 
   // Conversation Relate Service
 
-  create_group_message(newGroup: any) {
+  create_group(newGroup: any) {
     return this.http.post<any>(`${this.baseUrl}/conversation/create-group`, newGroup)
   }
 
@@ -140,19 +161,19 @@ export class TestyService {
     return this.http.post<any>(`${this.baseUrl}/conversation/send-group`, groupMessage)
   }
 
-  get_messages(userID: string): Observable<Message[]> {
-    return this.http.post<any>(`${this.baseUrl}/conversation`, { userID })
+  get_messages(userID: string, lastDateTime: string): Observable<Conversation[]> {
+    return this.http.post<any>(`${this.baseUrl}/conversation`, { userID, lastDateTime })
   }
 
-  get_group_messages(userID: string) {
-    return this.http.post<any>(`${this.baseUrl}/conversation/group`, { userID })
+  get_group_messages(userID: string, lastDateTime: string): Observable<GroupConversation[]> {
+    return this.http.post<any>(`${this.baseUrl}/conversation/group`, { userID, lastDateTime })
   }
 
   get_group_info(groupID: string) {
     return this.http.post<any>(`${this.baseUrl}/conversation/group/info`, { groupID })
   }
 
-  update_group_info(groupInfo: string) {
+  update_group_info(groupInfo: any) {
     return this.http.post<any>(`${this.baseUrl}/conversation/group/update`, groupInfo)
   }
 
@@ -160,11 +181,15 @@ export class TestyService {
     return this.http.post<any>(`${this.baseUrl}/conversation/group/delete`, { groupID })
   }
 
-  add_group_members(groupID: string, members: string) {
+  get_group_members(groupID: string): Observable<UserInfo[]> {
+    return this.http.post<any>(`${this.baseUrl}/conversation/group/member/all`, { groupID })
+  }
+
+  add_group_members(groupID: string, members: any) {
     return this.http.post<any>(`${this.baseUrl}/conversation/group/member/add`, { groupID, members })
   }
 
-  delete_group_members(groupID: string, members: string) {
+  delete_group_members(groupID: string, members: any) {
     return this.http.post<any>(`${this.baseUrl}/conversation/group/member/delete`, { groupID, members })
   }
 

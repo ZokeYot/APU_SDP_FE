@@ -30,7 +30,6 @@ export class AppComponent implements OnInit {
         const curUrl = this.router.url;
         this.loggedIn = !(curUrl === '/register' || curUrl === '/login' || curUrl === "/profile" || curUrl === "/update-profile");
 
-        console.log(curUrl)
         if (this.loggedIn) {
           this.isStudent = sessionStorage.getItem('role') === 'student';
           this.isLecturer = sessionStorage.getItem('role') === 'lecturer';

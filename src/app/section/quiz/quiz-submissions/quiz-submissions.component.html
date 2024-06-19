@@ -1,12 +1,16 @@
-<div *ngIf="!displaySubmissions">
-    <div *ngFor="let submission of submissions" (click)="showSubmission(submission)" >
-        <img src="data:image/image;base64,{{submission.profile_picture}}" alt="">
-        <p>{{submission.studentName}}</p>
-        <p>{{submission.score}}</p>
+<div *ngIf="!displaySubmissions" class="flex flex-wrap">
+    <div *ngFor="let submission of submissions" (click)="showSubmission(submission)" class="my-10 flex items-center" >
+        <img src="data:image/image;base64,{{submission.profile_picture}}" alt="" class="w-[100px] h-[100px] rounded-full">
+        
+        <div class="ml-5">
+            <p class="font-bold text-lg">{{submission.studentName}}</p>
+            <p class="text-lg font-bold">Score : {{submission.score}} marks</p>
+            <p class="text-sm font-bold">Submit Date : {{submission.completedDate}}</p>
+        </div>
     </div>
 </div>
 
 <div *ngIf="displaySubmissions">
-    <button (click)="back()">Back</button>
+    <button class="border-2 border-gray-500 h-[50px] bg-gray-500 py-3 px-5 mt-10 text-xl font-bold text-white mr-auto ml-5 rounded-2xl" (click)="back()">Back</button>
     <app-student-submission [submission]="selectedSubmission"></app-student-submission>
 </div>

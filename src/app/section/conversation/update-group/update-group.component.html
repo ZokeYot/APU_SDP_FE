@@ -1,0 +1,29 @@
+<div class="w-fit mx-auto bg-white p-10">
+    <div class="flex justify-between">
+        <button class="mb-10 bg-gray-500 hover:bg-gray-800 text-white font-bold py-2 px-3 h-fit text-xl rounded-lg"
+        routerLink = "/conversation">Back</button>
+    
+        <div>
+            <button class="bg-orange-500 hover:bg-orange-800 px-3 py-2 text-white font-bold mx-3 my-10 text-2xl rounded-lg"
+            (click)="updateGroup()">Update</button>
+            <button class="bg-red-500 hover:bg-red-800 px-3 py-2 text-white font-bold mx-3 my-10 text-2xl rounded-lg"
+            (click)="deleteGroup()">Delete</button>
+        </div>
+    </div>
+    <h1 class="text-center text-3xl font-bold mb-10">Update Conversation Group</h1>
+
+    <img src="data:image/*;base64,{{profile_picture}}"
+    class="w-[300px] h-[300px] border-2 border-black rounded-full mx-auto object-cover object-center" (click)="uploadFile()">
+        <input type="file" accept="image/*" name="" id="profile-input" class="hidden" (change)="fileUploaded($event)" >
+    <div class="flex my-10">
+        <label class="text-3xl font-bold" for="">Group Name: </label>
+        <input class="text-2xl ml-5 border-2 focus:border-black" type="text" placeholder="Group Name" [(ngModel)]="name">
+    </div>
+
+    <div class="flex justify-center">
+        <button class="bg-green-500 hover:bg-green-800 px-3 py-2 text-white font-bold mx-3 my-10 text-2xl rounded-lg"
+        (click)="addMember()">Add Member</button>
+        <button class="bg-red-500 hover:bg-red-800 px-3 py-2 text-white font-bold mx-3 my-10 text-2xl rounded-lg"
+        (click)="removeMember()">Remove Member</button>
+    </div>
+</div>

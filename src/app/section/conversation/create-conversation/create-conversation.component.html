@@ -1,0 +1,31 @@
+<button routerLink="/conversation" 
+class="block mr-auto ml-[100px] h-fit text-2xl  text-white py-2 px-5 rounded-lg bg-gray-500 font-bold hover:bg-gray-800">Back</button>
+
+
+<input type="search" class="text-2xl rounded-full block ml-auto mr-[100px] mt-20 px-2 py-2" 
+    placeholder="Search User" (input)="searchUser($event)"/>
+<div class="flex flex-wrap justify-around" *ngIf="filteredUsers.length == 0 ">
+    <div *ngFor="let user of users" (click)="createConversation(user)" >
+       <div class='flex my-10 w-[500px] h-[200px] rounded-xl bg-white hover:bg-slate-300'>
+            <img src="data:image/*;base64,{{user.profile_picture}}" class="w-[200px] h-[150px] my-auto ml-10" alt="">
+             <div class="my-auto ml-10">
+                <p class="text-2xl font-bold">{{user.name}}</p>
+                <p *ngIf="user.role==='student'" class="text-md font-bold">{{user.title}}</p>
+                <p>{{user.role}}</p>
+             </div>
+       </div>
+    </div>
+ </div>
+
+ <div class="flex flex-wrap justify-around" *ngIf="filteredUsers.length > 0 ">
+    <div *ngFor="let user of filteredUsers" (click)="createConversation(user)"  >
+       <div class='flex my-10 w-[500px] h-[200px] rounded-xl bg-white hover:bg-slate-300'>
+            <img src="data:image/*;base64,{{user.profile_picture}}" class="w-[200px] h-[150px] my-auto ml-10" alt="">
+             <div class="my-auto ml-10">
+                <p class="text-2xl font-bold">{{user.name}}</p>
+                <p *ngIf="user.role==='student'" class="text-md font-bold">{{user.title}}</p>
+                <p>{{user.role}}</p>
+             </div>
+       </div>
+    </div>
+ </div>

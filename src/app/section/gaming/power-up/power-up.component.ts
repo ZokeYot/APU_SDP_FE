@@ -27,8 +27,23 @@ export class PowerUpComponent {
   purchase_item() {
     if (this.purchaseAmount == 0)
       alert("Nothing selected !!")
-    if (this.total > +this.user.gaming_point)
-      alert("Insufficient gaming point !!")
+    else if (this.total > +this.user.gaming_point)
+      alert("Insufficient gaming point !! Go play some quiz ")
+    else {
+      this.service.buy_item(this.userID, this.purchaseAmount).subscribe({
+        next: () => {
+          alert("Item have added to your inventory")
+          this.router.navigateByUrl("/shop")
+          const amount = sessionStorage.getItem('item-amount') as string
+          const newAmount = Number.parseInt(amount) + this.purchaseAmount
+          sessionStorage.setItem('item-amount', newAmount.toString())
+        },
+        error: (response) => {
+          alert(response.error.failure)
+          this.router.navigateByUrl('/shop')
+        }
+      })
+    }
 
   }
 

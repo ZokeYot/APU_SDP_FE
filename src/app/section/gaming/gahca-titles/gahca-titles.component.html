@@ -1,7 +1,14 @@
-<div class="flex justify-end my-10">
+<div class="w-[80%]" id="floating-text">
+    <span class="text text-center">You can always changes your title in the profile</span> 
+    <span class="text text-left">You might get the same title again. That's why its called "gacha" ~~</span>
+    <span class="text text-left">Can't see the pointer ?? Like that more interesting mah ~~ </span>
+</div>
+<div class="flex justify-end mb-10">
     <p class="font-bold text-white text-3xl mr-10 ">Gaming Point : {{user.gaming_point}}</p>
 </div>
-<div class="wheel-container py-10">
+<div class="wheel-container pb-10">
     <canvas id="wheel" width="500" height="500"></canvas>
+    <div class="pointer"></div>
     <button id="spin-btn" (click)="drawTitle()" [disabled]="isSpinning">Spin</button>
+    
 </div>

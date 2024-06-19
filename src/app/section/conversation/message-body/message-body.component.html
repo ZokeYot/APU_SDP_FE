@@ -1,26 +1,32 @@
-<div class="p-5 bg-green-500 flex items-center mb-10">
+<div class="p-5 border-2 border-gray-800 bg-gray-700 bg-opacity-80 flex items-center rounded-lg mb-10" id="header">
     <img src="data:image/*;base64,{{this.selectedConversation.profile_picture}}" alt="" class="rounded-full w-[50px] h-[50px]">
     <p class="text-3xl font-bold ml-10">{{selectedConversation.name}}</p>
+    <button (click)="updateGroup(selectedConversation)"
+    class="text-xl bg-green-500 hover:bg-green-800 font-bold text-white ml-auto mr-10 py-2 px-3 rounded-lg" *ngIf="isAdmin">Update Group</button>
 </div>
-<div *ngIf="showConversation">
-    <div *ngFor="let message of conversation.messages"
+<div *ngIf="showConversation" class="max-h-[500px] overflow-auto" #messages>
+    <div *ngFor="let message of conversation.messages" class="my-2 w-fit rounded-lg py-2 px-2 max-w-[500px] text-wrap break-words"
     [ngClass]="{
-        'bg-red-500 mb-5' : (userID === message.senderID || userID === message.receiverID),
-        'bg-green-500 mb-5' : !(userID === message.senderID || userID === message.receiverID)
+        'bg-red-500 ml-auto mr-10' : message.belongCurrUser,
+        'bg-green-500 mr-auto ml-10' : !message.belongCurrUser
     }">
-        {{conversation.name}}
-        {{message.content}}
-        {{message.date}}
+        <p>{{message.content}} <br><br></p>
+        <p class="text-[10px] text-right  pl-10">{{message.date}}</p>
     </div>
 </div>
 
-<div *ngIf="showGroupConversation">
-    <div *ngFor="let message of groupConversation.messages" 
-    [ngClass]="{
-        'bg-red-500 mb-5' : userID === message.senderID,
-        'bg-green-500 mb-5' : !(userID === message.senderID)
-    }">
-        {{message.name}}
-        {{message.content}}
+<div *ngIf="showGroupConversation" class="max-h-[500px] overflow-auto" #groupMessages>
+    <div *ngFor="let message of groupConversation.messages" class="flex">
+        <img src="data:image/*;base64,{{message.profile_picture}}" class="w-[50px] h-[50px] ml-10 rounded-full" *ngIf="!message.belongCurrUser">
+        <div  class="my-2 w-fit rounded-lg py-2 px-2 max-w-[500px] text-wrap break-words"
+        [ngClass]="{
+            'bg-red-500 ml-auto mr-10' : message.belongCurrUser,
+            'bg-green-500 mr-auto ml-5' : !message.belongCurrUser
+        }">
+            <p class="text-left font-bold text-xl" *ngIf="!message.belongCurrUser">{{message.name}} <br></p> 
+            <p>{{message.content}} <br><br></p>
+            <p class="text-[10px] text-right pl-10">{{message.date}} </p>
+        </div>
     </div>
 </div>
+

@@ -1,16 +1,15 @@
 .wheel-container {
     text-align: center;
     position: relative;
-    width: 600px;
-    height: 600px;
+    width: 800px;
+    height: 800px;
     margin: 0 auto;
 }
 
 canvas {
     width: 100%;
-    /* Make the canvas take the full width of the container */
     height: 100%;
-    /* Make the canvas take the full height of the container */
+
 }
 
 #final-value {
@@ -37,4 +36,44 @@ button {
     font-size: 1.8em;
     letter-spacing: 0.1em;
     font-weight: 600;
+}
+
+#floating-text {
+    position: relative;
+    animation: floatAnimation 4s ease-in-out infinite;
+}
+
+.text {
+    display: block;
+    margin-left: 200px;
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: wheat;
+    transform-origin: center;
+    animation: tiltAnimation 4s ease-in-out infinite;
+}
+
+@keyframes floatAnimation {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes tiltAnimation {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(5deg);
+    }
 }

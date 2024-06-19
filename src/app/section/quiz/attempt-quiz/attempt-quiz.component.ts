@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { TestyService } from '../../../service/testy.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -11,20 +11,28 @@ import { Response } from '../../../model/submission';
 @Component({
   selector: 'app-attempt-quiz',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './attempt-quiz.component.html',
   styleUrl: './attempt-quiz.component.css'
 })
-export class AttemptQuizComponent {
+export class AttemptQuizComponent implements OnInit {
   quizID !: string;
   userID !: string;
   quiz !: any;
   questions !: Response[]
+  useItem !: boolean
 
   constructor(private service: TestyService, private route: ActivatedRoute, private router: Router) {
     this.quizID = this.route.snapshot.paramMap.get('id') as string;
     this.userID = sessionStorage.getItem('id') as string;
     this.get_quiz_info()
+
+
+  }
+  ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      this.useItem = params['use'] === 'yes'
+    })
   }
 
   get_quiz_info() {
@@ -43,15 +51,17 @@ export class AttemptQuizComponent {
         score += 500
     })
 
-    alert(`Congrat!! You have answered ${score / 500} correct answer !! Earned ${score} gaming point!!`);
+    alert(`Congrat!! You have answered ${score / 500} correct answer !! Earned ${this.useItem ? score * 2 : score} gaming point!!`);
     const submission = {
       "quizID": this.quizID,
       "studentID": this.userID,
       "completeDate": completeDate,
       "response": this.questions,
-      "score": score
+      "score": score,
+      "gaming_point": this.useItem ? score * 2 : score
     }
-    console.log(submission)
+
+
     this.service.create_submission(submission).subscribe({
       next: (response) => {
         alert(response.success)
@@ -59,6 +69,15 @@ export class AttemptQuizComponent {
       },
       error: (response) => alert(response.error.failure)
     })
+    if (this.useItem) {
+      this.service.use_item(this.userID).subscribe({
+        next: () => {
+          const amount = sessionStorage.getItem('item-amount') as string
+          const newAmount = Number.parseInt(amount) - 1
+          sessionStorage.setItem('item-amount', newAmount.toString())
+        }
+      })
+    }
 
   }
 

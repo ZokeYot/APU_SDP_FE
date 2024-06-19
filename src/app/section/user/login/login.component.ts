@@ -36,11 +36,12 @@ export class LoginComponent {
     alert("Welcome")
     sessionStorage.setItem('id', response.userID)
     sessionStorage.setItem('role', response.role)
+    sessionStorage.setItem('item-amount', response.item_amount)
     this.router.navigateByUrl('/home-page')
   }
 
   loginFailed(response: any): void {
-    this.errorMessage = response.error;
+    this.errorMessage = response.error.failure;
   }
 }
 

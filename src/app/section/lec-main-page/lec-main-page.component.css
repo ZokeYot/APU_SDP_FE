@@ -1,4 +1,4 @@
-#material-sec{
+#material-sec {
     background-color: black;
     height: 200px;
     max-height: 200px;
@@ -20,7 +20,8 @@
     height: 100%;
     z-index: 1;
 }
-.tagline{
+
+.tagline {
     color: white;
     font-weight: bolder;
     font-size: 30px;
@@ -30,15 +31,15 @@
     z-index: 2;
 }
 
-#highlight_learning{
+#highlight_learning {
     color: #FF5733;
 }
 
-#highlight_material{
+#highlight_material {
     color: #2E86C1;
 }
 
-#add_mate{
+#add_mate {
     height: 45px;
     width: 125px;
     padding: 10px;
@@ -52,23 +53,24 @@
     z-index: 5;
 }
 
-#recent_quiz_sec{
+#recent_quiz_sec {
     overflow: hidden;
 }
 
-#recent_created_quiz{
+#recent_created_quiz {
     color: white;
     font-size: 23px;
     position: relative;
+    width: fit-content;
     top: 28px;
     left: 10px;
 }
 
-#view_more{
-    color: white;
-    font-size: 15px;
-    position: relative;
-    left: 1350px;
-    top: 2px;
-    cursor: pointer;
+#view_more {
+    color: red;
+    size: 200px;
+    margin-left: auto;
+    display: block;
+    width: fit-content;
+    margin-right: 100px;
 }

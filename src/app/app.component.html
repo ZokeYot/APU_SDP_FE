@@ -1,8 +1,10 @@
-<div [ngClass]="{'w-screen min-h-screen h-fit bg-main-page box-border' : true}">
-    <app-header *ngIf="loggedIn"></app-header>
-    <app-student-navbar *ngIf="loggedIn && isStudent"></app-student-navbar>
-    <app-lecturer-navbar *ngIf="loggedIn && isLecturer"></app-lecturer-navbar>
+<div [ngClass]="{' min-h-screen bg-main-page box-border' : true}">
+    <div class="">
+        <app-header *ngIf="loggedIn"></app-header>
+        <app-student-navbar *ngIf="loggedIn && isStudent"></app-student-navbar>
+        <app-lecturer-navbar *ngIf="loggedIn && isLecturer"></app-lecturer-navbar>
 
+    </div>
     <router-outlet></router-outlet>
 </div>
 

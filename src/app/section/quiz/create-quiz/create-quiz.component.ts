@@ -33,7 +33,7 @@ export class CreateQuizComponent {
   codingQuestion: boolean = false;
 
   constructor(private service: TestyService, private router: Router) {
-
+    this.addQuestion()
   }
 
   title: string = '';
@@ -55,6 +55,13 @@ export class CreateQuizComponent {
     }
   }
 
+  removeOptions(question: any): void {
+    if (question.options.length <= 2)
+      alert('Should have atleast 2 options ')
+    else
+      question.options.pop()
+  }
+
   trackByIndex(index: number): number {
     return index;
   }
@@ -70,6 +77,23 @@ export class CreateQuizComponent {
       options: ['', ''],
       answer: ''
     });
+  }
+
+  removeQuestion(): void {
+    if (this.questions.length <= 2)
+      alert("A quiz should have atleast 2 questions")
+    else
+      this.questions.pop()
+  }
+  checkForm() {
+    if (!this.title)
+      alert('The quiz title cannot be empty !!')
+    else if (!this.description)
+      alert('Just put anything on the quiz description !!')
+    else if (!this.imageUrl)
+      alert('Upload lah a thumbnail for the quiz')
+    else
+      this.submit()
   }
 
   submit(): void {

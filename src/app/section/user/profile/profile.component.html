@@ -8,8 +8,13 @@
         <a routerLink="/profile">
             <div class="title-container">
                 <div class="page">User Profile</div>
+                <button (click)="logout()"
+                class="ml-auto text-xl bg-red-500 text-white font-bold px-3 rounded-2xl shadow-black shadow-md hover:bg-red-800" >Logout</button>
             </div>
+       
         </a> 
+
+       
 
         <img [src]="imageUrl" alt="Profile Picture" class="profile-picture">
         <div class="profile-info">
@@ -35,6 +40,21 @@
         <div class="profile-details">
             <span class="label">Gender</span>
             <span>{{user.gender}}</span>
+        </div>
+
+        <div class="profile-details w-fit flex font-bold">
+            <p class="text-center">Gaming Point : </p>
+            <p class="ml-10">{{user.gaming_point}}</p>
+        </div>
+
+        <div class="profile-details font-bold flex-col">
+            <p class="text-left text-2xl">Game Inventory</p>
+            <div class="w-fit">
+                <p class="text-center">Power Up Boost</p>
+                <img src="../../../../assets/img/power-up.png" alt="" class="w-[100px] h-[100px] mx-auto">
+                <p class="text-center">{{amount}}</p>
+            </div>
+           
         </div>
         <div class="buttons">
             <button class="back-button" routerLink="/home-page">Back</button>

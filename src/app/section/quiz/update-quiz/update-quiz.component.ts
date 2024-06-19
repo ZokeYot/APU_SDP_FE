@@ -65,6 +65,14 @@ export class UpdateQuizComponent {
     }
   }
 
+  removeQuestion(): void {
+    if (this.quiz.questions.length <= 2)
+      alert("A quiz should have atleast 2 questions")
+    else
+      this.quiz.questions.pop()
+  }
+
+
   uploadFile(): void {
     document.getElementById('thumbnail_upload')?.click();
   }

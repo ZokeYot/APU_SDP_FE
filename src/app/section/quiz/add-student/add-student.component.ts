@@ -31,8 +31,6 @@ export class AddStudentComponent {
       this.selectedStudents.push({ studentID: student.id })
     else
       this.selectedStudents.splice(index, 1)
-
-    console.log(this.findIndex(student.id) !== -1)
   }
 
   findIndex(studentID: string) {

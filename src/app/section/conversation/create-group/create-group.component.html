@@ -1,0 +1,18 @@
+<div class="w-fit mx-auto bg-white p-10">
+    <button class="mb-10 bg-gray-500 hover:bg-gray-800 text-white font-bold py-2 px-3 text-xl rounded-lg"
+    routerLink="/conversation">Back</button>
+    <h1 class="text-center text-3xl font-bold mb-10">Create Conversation Group</h1>
+
+    <div class="w-[300px] h-[300px] border-2 border-black rounded-full mx-auto bg-cover bg-center" (click)="uploadFile()"
+    [style.backgroundImage]="'url(' + imageUrl +')'" >
+        <input type="file" accept="image/*" name="" id="profile-input" class="hidden" (change)="fileUploaded($event)" >
+    </div>
+
+    <div class="flex my-10">
+        <label class="text-3xl font-bold" for="">Group Name: </label>
+        <input class="text-2xl ml-5 border-2 focus:border-black" type="text" placeholder="Group Name" [(ngModel)]="name">
+    </div>
+
+    <button class="mx-auto bg-green-500 hover:bg-green-800 px-3 py-2 text-white font-bold block text-2xl rounded-lg"
+    (click)="createGroup()">Create</button>
+</div>
