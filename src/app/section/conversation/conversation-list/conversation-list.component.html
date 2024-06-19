@@ -1,0 +1,11 @@
+<div *ngFor="let conversation of conversations" class="border-2 border-black bg-white flex py-5" 
+(click)="conversationSelected(conversation)">
+    <img src="data:image/*;base64,{{conversation.profile_picture}}" alt="">
+    <div>{{conversation.name}}</div>
+</div>
+
+<div *ngFor="let groupConversation of groupConversations" class="border-2 border-black bg-white flex py-5 "
+ (click)="conversationSelected(groupConversation)">
+    <img src="data:image/*;base64,{{groupConversation.profile_picture}}" alt="">
+    <div>{{groupConversation.name}}</div>
+</div>

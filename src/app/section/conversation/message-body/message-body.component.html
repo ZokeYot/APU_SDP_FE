@@ -1,0 +1,26 @@
+<div class="p-5 bg-green-500 flex items-center mb-10">
+    <img src="data:image/*;base64,{{this.selectedConversation.profile_picture}}" alt="" class="rounded-full w-[50px] h-[50px]">
+    <p class="text-3xl font-bold ml-10">{{selectedConversation.name}}</p>
+</div>
+<div *ngIf="showConversation">
+    <div *ngFor="let message of conversation.messages"
+    [ngClass]="{
+        'bg-red-500 mb-5' : (userID === message.senderID || userID === message.receiverID),
+        'bg-green-500 mb-5' : !(userID === message.senderID || userID === message.receiverID)
+    }">
+        {{conversation.name}}
+        {{message.content}}
+        {{message.date}}
+    </div>
+</div>
+
+<div *ngIf="showGroupConversation">
+    <div *ngFor="let message of groupConversation.messages" 
+    [ngClass]="{
+        'bg-red-500 mb-5' : userID === message.senderID,
+        'bg-green-500 mb-5' : !(userID === message.senderID)
+    }">
+        {{message.name}}
+        {{message.content}}
+    </div>
+</div>
