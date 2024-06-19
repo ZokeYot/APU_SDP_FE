@@ -1,0 +1,33 @@
+<section id="material-sec" routerLink="/materials">
+    <h1 class="tagline">Discover and <span id="highlight_download">DOWNLOAD</span></h1>
+    <h1 class="tagline" id="second_tagline">Your <span id="highlight_gateway">GATEWAY</span> to Learning Materials!</h1>
+</section>
+
+<section id="power-up-sec" routerLink="/power-up">
+    <h1 class="power_up_tagline">Want to get <span id="highlight_stronger">STRONGER</span></h1>
+    <h1 class="power_up_tagline" id="second_power_tagline">Get a <span id="highlight_power">POWER</span> up</h1>
+</section>
+
+<section id="title-sec" routerLink="/gacha">
+    <h1 class="title_tagline"><span id="highlight_spin">SPIN</span> to</h1>
+    <h1 class="title_tagline" id="second_title_tagline">Earn <span id="highlight_unique_title">UNIQUE TITLES</span></h1>
+</section>
+
+<div id="recent_quiz_sec">
+    <h1 id="recent_created_quiz">Recently Created Quiz</h1>
+    <h3 routerLink="/quiz" id="view_more">View More ></h3>
+
+    <div class="flex flex-wrap justify-between">
+        <div *ngFor="let quiz of recent_quiz.slice(-3).reverse()" routerLink="/quiz/{{quiz.quizID}}"
+        class="border-2 border-gray-900 w-[45%] p-10 my-10 m-5 rounded-2xl bg-white shadow-2xl flex items-center">
+            <img src="data:image/*;base64,{{quiz.thumbnail}}" alt="" class="w-[200px] h-[200px]">
+              
+            <div class="ml-10">
+              <p class="font-bold text-5xl">{{quiz.title}}</p>
+              <p class="font-bold text-2xl">Created By : {{quiz.adminName}}</p>
+              <p class="font-bold text-xl">{{quiz.description}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
