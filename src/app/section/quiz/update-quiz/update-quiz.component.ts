@@ -86,6 +86,13 @@ export class UpdateQuizComponent {
     reader.readAsDataURL(file);
   }
 
+  updateAnswerAndFirstOption(question: Question, answer: string) {
+    question.content.answer = answer;
+    if (question.content.options.length > 0) {
+      question.content.options[0].option = answer;
+    }
+  }
+
   submit() {
     this.service.update_quiz(this.quiz).subscribe({
       next: (response) => {
@@ -98,6 +105,7 @@ export class UpdateQuizComponent {
       }
     })
 
+    console.log(this.quiz)
   }
 
 }

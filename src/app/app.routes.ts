@@ -16,15 +16,13 @@ import { DeleteStudentComponent } from './section/quiz/delete-student/delete-stu
 import { ShopComponent } from './section/gaming/shop/shop.component';
 import { GahcaTitlesComponent } from './section/gaming/gahca-titles/gahca-titles.component';
 import { PowerUpComponent } from './section/gaming/power-up/power-up.component';
-import { LecMainPageComponent } from './section/home/lec-main-page/lec-main-page.component';
 import { CreateConversationComponent } from './section/conversation/create-conversation/create-conversation.component';
 import { CreateGroupComponent } from './section/conversation/create-group/create-group.component';
 import { UpdateGroupComponent } from './section/conversation/update-group/update-group.component';
 import { AddGroupMemberComponent } from './section/conversation/add-group-member/add-group-member.component';
 import { DeleteGroupMemberComponent } from './section/conversation/delete-group-member/delete-group-member.component';
-import { StudentMainPageComponent } from './section/home/student-main-page/student-main-page.component';
 import { HomePageComponent } from './section/home/home-page/home-page.component';
-import { StudentMainPageComponent } from './section/student-main-page/student-main-page.component';
+
 
 export const routes: Routes = [
     { path: "register", component: RegisterComponent },
