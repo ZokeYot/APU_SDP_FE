@@ -71,8 +71,6 @@ export class UpdateComponent {
       "title": this.new_title
     }
 
-    console.log(newProfile)
-
     this.service.update_profile(newProfile).subscribe({
       next: (response) => {
         alert(response.success)

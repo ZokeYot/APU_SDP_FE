@@ -1,6 +1,6 @@
 <main>
     <div *ngIf="!showMaterialDetails">
-      <input type="search" class="text-2xl rounded-full block ml-auto mr-[100px] mt-20 px-2 py-2" placeholder="Search Quiz" (input)="searchMaterial($event)"/>
+      <input type="search" class="text-2xl rounded-full block ml-auto mr-[100px] mt-20 px-2 py-2" placeholder="Search Material" (input)="searchMaterial($event)"/>
       <button *ngIf="role === 'lecturer'"(click)="uploadFile()" 
       class="text-2xl w-fit my-3 text-white font-bold bg-green-500 py-2 px-3 rounded-lg ml-auto mr-[100px] mt-10 hover:bg-green-800 block">Add Material</button>
       <input id="file-input" type="file" class="hidden" (change)="fileUploaded($event)">

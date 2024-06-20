@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavigationEnd, Router, RouterModule, RouterOutlet } from '@angular/router';
+import { NavigationEnd, NavigationStart, Router, RouterModule, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './section/header/header.component';
 import { LecturerNavbarComponent } from './section/navbar/lecturer-navbar/lecturer-navbar.component';
 import { FormsModule } from '@angular/forms';
@@ -38,8 +38,9 @@ export class AppComponent implements OnInit {
         if (curUrl.startsWith("/attempt-quiz")) {
           this.isStudent = false;
         }
-
       }
+
+
     });
   }
 

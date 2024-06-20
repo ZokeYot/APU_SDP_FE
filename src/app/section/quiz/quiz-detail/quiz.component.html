@@ -61,7 +61,10 @@
                          <p>Score : {{submission.score}} mark</p>
                      </div>
                 </div>
-             </div>
+            </div>
+        </div>
+        <div *ngIf="submissions.length === 0" class="text-xl mt-3 font-bold">
+            It's seems no one attempt the quiz yet...
         </div>
     </div>
 
@@ -93,6 +96,9 @@
             </div>
          
             <app-quiz-submissions *ngIf="showSubmission" [submissions]="submissions"></app-quiz-submissions>
+            <div *ngIf="submissions.length === 0" class="text-xl mt-3 font-bold">
+                No submissions have submitted... <br> How about call your students to be active a little bit ?? 
+            </div>
         </div>
         
     </div>

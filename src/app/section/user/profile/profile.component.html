@@ -42,12 +42,12 @@
             <span>{{user.gender}}</span>
         </div>
 
-        <div class="profile-details w-fit flex font-bold">
+        <div class="profile-details w-fit flex font-bold" *ngIf="role === 'student'">
             <p class="text-center">Gaming Point : </p>
             <p class="ml-10">{{user.gaming_point}}</p>
         </div>
 
-        <div class="profile-details font-bold flex-col">
+        <div class="profile-details font-bold flex-col " *ngIf="role === 'student'">
             <p class="text-left text-2xl">Game Inventory</p>
             <div class="w-fit">
                 <p class="text-center">Power Up Boost</p>

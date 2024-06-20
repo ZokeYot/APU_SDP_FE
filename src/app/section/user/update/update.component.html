@@ -6,7 +6,7 @@
     <div class="flex justify-around">
       <div class="w-[40%]">
         <img [src]="imageUrl" alt="" class="w-[250px] h-[250px] rounded-full border-2 border-black my-5 mx-auto" (click)="uploadFile()">
-        <input type="file" class="hidden" id="profile_picture" (change)="fileUploaded($event)">
+        <input type="file" accept="image/*" class="hidden" id="profile_picture" (change)="fileUploaded($event)">
         <p class="my-5 text-center">Profile Picture</p>
       </div>
   
