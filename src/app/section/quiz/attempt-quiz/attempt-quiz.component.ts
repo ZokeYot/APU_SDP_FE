@@ -41,7 +41,19 @@ export class AttemptQuizComponent implements OnInit {
       this.questions = this.quiz.questions
     })
   }
+  checkSubmission() {
+    let submit = true;
+    for (let question of this.questions) {
+      if (!question.content.response) {
+        alert(`Hello ?? The question ${this.questions.indexOf(question) + 1} is not answered !!`)
+        submit = false
+        break
+      }
+    }
 
+    if (submit)
+      this.submit()
+  }
 
   submit() {
     const completeDate = new Date().toISOString().slice(0, 10).replaceAll("-", "");

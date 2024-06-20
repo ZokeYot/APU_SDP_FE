@@ -86,13 +86,24 @@ export class CreateQuizComponent {
       this.questions.pop()
   }
   checkForm() {
+    let submit = false;
+    let emptyQuestion = false
+
     if (!this.title)
       alert('The quiz title cannot be empty !!')
     else if (!this.description)
       alert('Just put anything on the quiz description !!')
     else if (!this.imageUrl)
       alert('Upload lah a thumbnail for the quiz')
-    else
+
+    for (let question of this.questions) {
+      if (question.question.trim() === '' || question.answer.trim() === '') {
+        alert(`Question / Answers can not be empty !! Check the question ${this.questions.indexOf(question) + 1}`)
+        emptyQuestion = true
+        break
+      }
+    }
+    if (!emptyQuestion)
       this.submit()
   }
 

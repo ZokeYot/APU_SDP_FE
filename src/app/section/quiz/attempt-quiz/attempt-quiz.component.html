@@ -9,17 +9,21 @@
         </div>
     </div>
 
-    <div>
-        <h1>Questions: </h1>
-        <div *ngFor="let question of questions; let i = index">
-            <h1>Question {{i + 1}} <br> {{question.question}}</h1>
+    <div class="ml-10">
+        <h1 class="text-5xl font-bold">Questions: </h1>
+        <div *ngFor="let question of questions; let i = index" class="border-2 rounded-lg p-5 text-white my-5"
+        [ngClass]="{
+            'bg-red-500 shadow-red-800 shadow-lg border-red-500' : i % 2 == 0,
+            'bg-green-500 shadow-green-800 shadow-lg border-green-500' : i % 2 == 1 
+        }">
+            <h1 class="text-3xl font-bold">Question {{i + 1}} <br> <span class="text-2xl mb-5">{{question.question}}</span></h1>
             
-            <div *ngIf="question.type === 'Mutiple Choice'">
+            <div *ngIf="question.type === 'Mutiple Choice'" class="mt-5">
                 <ul>
                     <li *ngFor="let option of question.content.options; let j = index">
                         <label for="question{{i}}">
-                            <input type="radio" name="question{{ i }}" [(ngModel)]="question.content.response" [value]="option.option" required>
-                            {{option.option}}
+                            <input class="size-5" type="radio" name="question{{ i }}" [(ngModel)]="question.content.response" [value]="option.option" required>
+                            <span class="text-2xl ml-5">{{option.option}}</span>
                         </label>
                     </li>
                 </ul>
@@ -27,16 +31,17 @@
 
             <div *ngIf="question.type === 'True and False'">
                 <label for="">
-                    <input type="radio" name="question{{ i }}" id="question{{i}}" value="True" [(ngModel)]="question.content.response" required>
-                    True
+                    <input class="size-5" type="radio" name="question{{ i }}" id="question{{i}}" value="True" [(ngModel)]="question.content.response" required>
+                    <span class="text-2xl ml-3">True</span>
                 </label>
                 <label for="">
-                    <input type="radio" name="question{{ i }}" id="question{{i}}"  value="False" [(ngModel)]="question.content.response" required>
-                    False
+                    <input class="size-5 ml-3" type="radio" name="question{{ i }}" id="question{{i}}"  value="False" [(ngModel)]="question.content.response" required>
+                    <span class="text-2xl ml-3">False</span>
                 </label>
             </div>
         </div>
 
-        <button (click)="submit()">Complete</button>
+        <button (click)="checkSubmission()" 
+        class="bg-orange-500  hover:bg-orange-800 text-white font-bold text-3xl ml-auto mr-10 mt-10 block px-3 py-2 rounded-lg">Complete</button>
     </div>
 </div>
