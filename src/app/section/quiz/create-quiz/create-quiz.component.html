@@ -3,14 +3,14 @@
     <div class="rounded-lg p-5 my-5">
         <p class="text-5xl font-bold mb-10" id="Quiz_Info">Quiz Info</p>
         <div class="flex flex-col">
-            <label class="text-3xl font-bold my-3" id="Quiz_Title">Quiz Title:</label>
+            <label class="text-3xl font-bold my-3" id="Quiz_Title">Quiz Title: <span class="text-sm text-red-700">*Required</span></label>
             <input type="text" placeholder="title" class="text-2xl rounded-md p-3" [(ngModel)]="title" id="Quiz_Title_Input">
         </div>
         <div class="flex flex-col">
-            <label class="text-3xl font-bold mt-3" id="Quiz_Description">Quiz Description:</label>
+            <label class="text-3xl font-bold mt-3" id="Quiz_Description">Quiz Description: <span class="text-sm text-red-700">*Required</span></label>
             <input type="text" placeholder="title" class="text-2xl rounded-md p-3" [(ngModel)]="description" id="Quiz_Description_Input">
         </div>
-        <label for="" id="Quiz_Thumbnail" class="text-3xl font-bold mt-3">Quiz Thumbnail</label>
+        <label for="" id="Quiz_Thumbnail" class="text-3xl font-bold mt-3">Quiz Thumbnail: <span class="text-sm text-red-700">*Required</span></label>
         <div class="border-2 bg-white border-black w-[100%] h-[600px] mx-auto bg-contain bg-center bg-no-repeat rounded-md my-3" 
         [style.backgroundImage]="'url(' + imageUrl +')'" (click)="uploadFile()">
             <p *ngIf="!imageUrl" class="text-center text-4xl leading-[600px] font-bold">Upload a thumbnail for the quiz</p>  
@@ -19,7 +19,7 @@
         
     </div>
 
-    <p class="text-5xl font-bold p-5">Quiz Questions</p>
+    <p class="text-5xl font-bold p-5">Quiz Questions: </p>
 
     <div class="bg-white rounded-2xl shadow-black shadow-lg p-10 my-10" *ngFor="let question of questions; let i = index">
         <div class="flex justify-end mr-5">
@@ -32,12 +32,12 @@
        
 
         <div class="flex flex-col">
-            <label class='mb-5 mr-3 leading-[8px] text-4xl font-bold' >Question</label>
+            <label class='mb-5 mr-3 leading-[8px] text-4xl font-bold' >Question: <span class="text-sm text-red-700">*Required</span></label>
             <textarea name="" id="" [(ngModel)]="question.question" class="w-[60%] h-[100px] border-2 border-black "></textarea>
         </div>
         
         <div *ngIf="question.type === 'True and False'" class="flex  my-5">
-            <label for="answer{{i}}" class="text-2xl font-bold">Answer :</label>
+            <label for="answer{{i}}" class="text-2xl font-bold">Answer : <span class="text-sm text-red-700">*Required</span></label>
             <select name="" id="answer{{i}}" [(ngModel)]="question.answer" class="border-2 border-black text-xl ml-3">
                 <option value="">Select Your Answer</option>
                 <option value="True">True</option>
@@ -51,8 +51,9 @@
                 <input class="mx-5 border-2 text-xl border-black" type="text" [value]="question.answer"  id="answer{{i}}" [(ngModel)]="question.answer">
             </div>
            
-           <div *ngFor="let option of question.options; let j = index; trackBy: trackByIndex" class="flex justify-between my-5">
-                <input placeholder="options {{j + 1}}" class="focus:bg-red-300 focus:outline-red-500 text-xl font-bold "  type="text" [value]="j === 0 ? question.answer : ''" [(ngModel)]="question.options[j]"  [disabled]="isLocked(j)"> 
+           <div *ngFor="let option of question.options; let j = index; trackBy: trackByIndex" class="flex justify-between my-5 flex-col">
+                <label for="">Option {{j + 1}} <span class="text-sm text-red-700">*Required</span></label>
+                <input placeholder="options {{j + 1}}" class="focus:bg-red-300 focus:outline-red-500 text-xl font-bold " type="text" [value]="j === 0 ? question.answer : ''" [(ngModel)]="question.options[j]"  [disabled]="isLocked(j)"> 
            </div>
            <button (click)="addOptions(question)" 
            class="text-2xl w-fit my-3 text-white font-bold bg-green-500 py-2 px-3 rounded-lg ml-auto hover:bg-green-800 ">Add Options</button>

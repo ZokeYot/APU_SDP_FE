@@ -109,7 +109,9 @@ export class ConversationComponent implements OnInit, OnDestroy {
       }
 
     })
-    this.service.get_group_messages(this.userID, this.lastDateTime).subscribe(data => this.groupConversations = data)
+    this.service.get_group_messages(this.userID, this.lastDateTime).subscribe(data => {
+      this.groupConversations = data
+    })
   }
 
   selectConversation(conversation: Conversation | GroupConversation) {

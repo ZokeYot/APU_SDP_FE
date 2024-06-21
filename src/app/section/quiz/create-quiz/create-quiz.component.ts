@@ -33,7 +33,6 @@ export class CreateQuizComponent {
   codingQuestion: boolean = false;
 
   constructor(private service: TestyService, private router: Router) {
-    this.addQuestion()
   }
 
   title: string = '';
@@ -80,8 +79,8 @@ export class CreateQuizComponent {
   }
 
   removeQuestion(): void {
-    if (this.questions.length <= 2)
-      alert("A quiz should have atleast 2 questions")
+    if (this.questions.length <= 1)
+      alert("A quiz should have atleast 1 questions")
     else
       this.questions.pop()
   }

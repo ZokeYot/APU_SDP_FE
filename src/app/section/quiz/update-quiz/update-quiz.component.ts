@@ -23,7 +23,6 @@ export class UpdateQuizComponent {
     this.service.get_quiz(this.quizID).subscribe(data => {
       this.quiz = data;
       this
-      console.log(this.quiz)
     })
   }
 
@@ -66,8 +65,8 @@ export class UpdateQuizComponent {
   }
 
   removeQuestion(): void {
-    if (this.quiz.questions.length <= 2)
-      alert("A quiz should have atleast 2 questions")
+    if (this.quiz.questions.length <= 1)
+      alert("A quiz should have atleast 1 questions")
     else
       this.quiz.questions.pop()
   }
@@ -93,6 +92,29 @@ export class UpdateQuizComponent {
     }
   }
 
+  checkForm() {
+    let submit = false;
+    let emptyQuestion = false
+
+
+    if (!this.quiz.title)
+      alert('The quiz title cannot be empty !!')
+    else if (!this.quiz.description)
+      alert('Just put anything on the quiz description !!')
+    else if (!this.imageUrl)
+      alert('Upload lah a thumbnail for the quiz')
+
+    for (let question of this.quiz.questions) {
+      if (question.question.trim() === '' || question.content.answer.trim() === '') {
+        alert(`Question / Answers can not be empty !! Check the question ${this.quiz.questions.indexOf(question) + 1}`)
+        emptyQuestion = true
+        break
+      }
+    }
+    if (!emptyQuestion)
+      this.submit()
+  }
+
   submit() {
     this.service.update_quiz(this.quiz).subscribe({
       next: (response) => {
@@ -104,8 +126,6 @@ export class UpdateQuizComponent {
         this.router.navigateByUrl('/quiz')
       }
     })
-
-    console.log(this.quiz)
   }
 
 }
