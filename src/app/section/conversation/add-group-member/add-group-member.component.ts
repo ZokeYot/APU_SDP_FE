@@ -3,6 +3,7 @@ import { TestyService } from '../../../service/testy.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { UserInfo } from '../../../model/conversation';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 
 interface Member {
@@ -12,7 +13,7 @@ interface Member {
 @Component({
   selector: 'app-add-group-member',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './add-group-member.component.html',
   styleUrl: './add-group-member.component.css'
 })
@@ -22,6 +23,7 @@ export class AddGroupMemberComponent {
   selectedUsers: Member[] = []
   groupID !: string
   userID!: string
+  searching !: string
 
   constructor(private service: TestyService, private router: Router, private route: ActivatedRoute) {
     this.groupID = this.route.snapshot.paramMap.get('id') as string;

@@ -3,11 +3,12 @@ import { TestyService } from '../../../service/testy.service';
 import { Router, RouterModule } from '@angular/router';
 import { UserInfo } from '../../../model/conversation';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-create-conversation',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './create-conversation.component.html',
   styleUrl: './create-conversation.component.css'
 })
@@ -16,6 +17,7 @@ export class CreateConversationComponent {
   users: UserInfo[] = []
   filteredUsers = [...this.users]
   userID: string = sessionStorage.getItem('id') as string
+  searching !: string
 
   constructor(private service: TestyService, private router: Router) {
     this.service.get_all_user().subscribe(data => this.users = data.filter(user => user.id.toString() !== this.userID))

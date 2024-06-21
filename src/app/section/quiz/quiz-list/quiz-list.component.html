@@ -1,37 +1,81 @@
-<input type="search" class="text-2xl rounded-full block ml-auto my-10 mr-[100px] mt-20 px-2 py-2" placeholder="Search Quiz" (input)="searchQuiz($event)"/>
+<input type="search" class="text-2xl rounded-full block ml-auto my-10 mr-[100px] mt-20 px-2 py-2" placeholder="Search Quiz"
+ (input)="searchQuiz($event)" [(ngModel)]="searching"/>
 <button routerLink='/create-quiz' *ngIf="role === 'lecturer'"
 class="ml-auto mr-[100px] py-2 px-4 block bg-green-500 text-lg font-bold text-white rounded-lg hover:bg-green-800">Create New Quiz</button>
 
-<div *ngIf="filterQuizzes.length === 0">
-  <div class="flex flex-wrap justify-around">
-    <div routerLink="/quiz/{{quiz.quizID}}" *ngFor="let quiz of quizzes.reverse()" 
-    class="border-2 border-gray-900 w-[45%] p-10 my-10 m-5 rounded-2xl bg-white shadow-2xl flex items-center">
-     
-          <img src="data:image/*;base64,{{quiz.thumbnail}}" alt="" class="w-[200px] h-[200px]">
-          
-          <div class="ml-10">
-            <p class="font-bold text-5xl">{{quiz.title}}</p>
-            <p class="font-bold text-2xl">Created by : {{quiz.adminName}}</p>
-            <p class="font-bold text-xl">{{quiz.description}}</p>
-          </div>
-    </div>
+<div *ngIf="role === 'student'">
+  <div *ngIf="filterQuizzes.length === 0 && searching === undefined">
+    <div class="flex flex-wrap justify-around">
+      <div routerLink="/quiz/{{quiz.quizID}}" *ngFor="let quiz of quizzes.reverse()" 
+      class="border-2 border-gray-900 w-[45%] p-10 my-10 m-5 rounded-2xl bg-white shadow-2xl flex items-center">
+       
+            <img src="data:image/*;base64,{{quiz.thumbnail}}" alt="" class="w-[200px] h-[200px]">
+            
+            <div class="ml-10">
+              <p class="font-bold text-5xl">{{quiz.title}}</p>
+              <p class="font-bold text-2xl">Created by : {{quiz.adminName}}</p>
+              <p class="font-bold text-xl">{{quiz.description}}</p>
+            </div>
+      </div>
+  </div>
+  </div>
+  
+  <div *ngIf="filterQuizzes.length > 0">
+    <div class="flex flex-wrap justify-around">
+      <div routerLink="/quiz/{{quiz.quizID}}" *ngFor="let quiz of filterQuizzes.reverse()" 
+      class="border-2 border-gray-900 w-[45%] p-10 my-10 m-5 rounded-2xl bg-white shadow-2xl">
+       
+            <img src="data:image/*;base64,{{quiz.thumbnail}}" alt="" class="w-[200px] h-[200px]">
+            
+            <div>
+              <p class="font-bold text-5xl">{{quiz.title}}</p>
+              <p class="font-bold text-xl">{{quiz.adminName}}</p>
+              <p class="font-bold text-xl">{{quiz.description}}</p>
+            </div>
+      </div>
+  </div>
 </div>
 </div>
 
-<div *ngIf="filterQuizzes.length > 0">
-  <div class="flex flex-wrap justify-around">
-    <div routerLink="/quiz/{{quiz.quizID}}" *ngFor="let quiz of filterQuizzes.reverse()" 
-    class="border-2 border-gray-900 w-[45%] p-10 my-10 m-5 rounded-2xl bg-white shadow-2xl">
-     
-          <img src="data:image/*;base64,{{quiz.thumbnail}}" alt="" class="w-[200px] h-[200px]">
-          
-          <div>
-            <p class="font-bold text-5xl">{{quiz.title}}</p>
-            <p class="font-bold text-xl">{{quiz.adminName}}</p>
-            <p class="font-bold text-xl">{{quiz.description}}</p>
-          </div>
-    </div>
+<div *ngIf="role === 'lecturer'">
+  <div *ngIf="filterLecturerQuizzes.length === 0  && searching === undefined">
+    <div class="flex flex-wrap justify-around">
+      <div routerLink="/quiz/{{quiz.quizID}}" *ngFor="let quiz of lecturerQuizzes.reverse()" 
+      class="border-2 border-gray-900 w-[45%] p-10 my-10 m-5 rounded-2xl bg-white shadow-2xl flex items-center">
+       
+            <img src="data:image/*;base64,{{quiz.thumbnail}}" alt="" class="w-[200px] h-[200px]">
+            
+            <div class="ml-10">
+              <p class="font-bold text-5xl">{{quiz.title}}</p>
+              <p class="font-bold text-2xl">Created by : {{quiz.adminName}}</p>
+              <p class="font-bold text-xl">{{quiz.description}}</p>
+            </div>
+      </div>
+  </div>
+  </div>
+  
+  <div *ngIf="filterLecturerQuizzes.length > 0">
+    <div class="flex flex-wrap justify-around">
+      <div routerLink="/quiz/{{quiz.quizID}}" *ngFor="let quiz of filterLecturerQuizzes.reverse()" 
+      class="border-2 border-gray-900 w-[45%] p-10 my-10 m-5 rounded-2xl bg-white shadow-2xl">
+       
+            <img src="data:image/*;base64,{{quiz.thumbnail}}" alt="" class="w-[200px] h-[200px]">
+            
+            <div>
+              <p class="font-bold text-5xl">{{quiz.title}}</p>
+              <p class="font-bold text-xl">{{quiz.adminName}}</p>
+              <p class="font-bold text-xl">{{quiz.description}}</p>
+            </div>
+      </div>
+  </div>
 </div>
 
-</div>
+
+
+
+
+
+
+
+
 

@@ -22,6 +22,7 @@ export class MaterialListComponent {
   selectedMaterial: any;
   showMaterialDetails: boolean = false;
   searchQuery !: string
+  searching !: string
 
   filteredMaterials = [...this.materials]
 

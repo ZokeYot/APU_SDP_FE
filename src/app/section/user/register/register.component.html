@@ -5,31 +5,41 @@
         <div class="w-[250px] h-[250px] rounded-full border-2 border-black mx-auto my-5 bg-center bg-cover" 
         [style.backgroundImage]="'url(' + imageUrl +')'" (click)="uploadFile()"></div>
 
-        <p class="text-center text-3xl mb-10">Profile Picture</p>
+        <p class="text-center text-3xl mb-10">Profile Picture <span class="text-sm text-red-700">*Required</span></p>
         <input type="file" id="image-upload" name="image-upload" class="hidden" accept="image/*" (change)="fileUploaded($event)" required>
-        <div class="form-group input-row">
-            <input type="text" id="first-name" name="first-name" placeholder="First Name" [(ngModel)]="firstName" required>
-            <input type="text" id="last-name" name="last-name (Optional)" placeholder="Last Name" [(ngModel)]="lastName" required>
-        </div>
+        <div class="input-row">
+           <div class="form-group">
+                <label for="first-name">First Name <span class="text-sm text-red-700">*Required</span></label>
+                <input type="text" id="first-name" name="first-name" placeholder="First Name" [(ngModel)]="firstName" required>
+           </div>
+           <div class="form-group">
+                <label for="last-name">Last Name (Optional)</label>
+                <input type="text" id="first-name" name="last-name" placeholder="Last Name " [(ngModel)]="lastName" required>
+           </div>
+        </div> 
         <div class="form-group">
+            <label for="email">Email <span class="text-sm text-red-700">*Required</span></label>
             <input type="email"  id="email" name="email" placeholder="Email Address" [(ngModel)]="email" required>
         </div>
         <div class="form-group">
+            <label for="password">Password <span class="text-sm text-red-700">*Required</span></label>
             <input type="password" id="password" name="password" placeholder="Password" [(ngModel)]="password" (input)="checkPasswordMatch()"
             [ngClass]="{'border-2 border-red-500 bg-red-300' : checkPassword}" 
             required>
         </div>
         <div class="form-group">
+            <label for="confirm-password">Confirm Password <span class="text-sm text-red-700">*Required</span></label>
             <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password" [(ngModel)]="confirmPassword" 
             (input)="checkPasswordMatch()">
+            <p *ngIf="checkPassword" class="text-md text-red-700">Password Did Not Match</p>
         </div>
         <div class="form-group">
-            <label for="dob">Date of Birth</label>
+            <label for="dob">Date of Birth <span class="text-sm text-red-700">*Required</span></label>
             <input type="date" id="dob" name="dob" [(ngModel)]="dob" required>
         </div>
         <div class="form-group input-combined">
             <div class="left">
-                <label>Gender</label>
+                <label>Gender <span class="text-sm text-red-700">*Required</span></label>
                 <div class="gender">
                     <div class="gender-box">
                         <label for="male">Male</label>
@@ -42,7 +52,7 @@
                 </div>
             </div>
             <div class="right">
-                <label for="lecture-key">Lecture Key</label>
+                <label for="lecture-key">Lecture Key (Optional)</label>
                 <input type="text" id="lecture-key" name="lecture-key" placeholder="Lecture Key (Optional)" [(ngModel)]="lectureKey">
             </div>
         </div>

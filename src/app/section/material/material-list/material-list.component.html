@@ -1,11 +1,12 @@
 <main>
     <div *ngIf="!showMaterialDetails">
-      <input type="search" class="text-2xl rounded-full block ml-auto mr-[100px] mt-20 px-2 py-2" placeholder="Search Material" (input)="searchMaterial($event)"/>
+      <input type="search" class="text-2xl rounded-full block ml-auto mr-[100px] mt-20 px-2 py-2" placeholder="Search Material" 
+      (input)="searchMaterial($event)" [(ngModel)]="searching"/>
       <button *ngIf="role === 'lecturer'"(click)="uploadFile()" 
       class="text-2xl w-fit my-3 text-white font-bold bg-green-500 py-2 px-3 rounded-lg ml-auto mr-[100px] mt-10 hover:bg-green-800 block">Add Material</button>
       <input id="file-input" type="file" class="hidden" (change)="fileUploaded($event)">
       
-      <div class="flex flex-wrap justify-around" *ngIf="filteredMaterials.length === 0">
+      <div class="flex flex-wrap justify-around" *ngIf="filteredMaterials.length === 0 && searching === undefined">
         <div *ngFor="let material of materials" class="bg-white flex items-center my-10 w-[400px] h-[150px] p-10 justify-around rounded-lg" 
           (click)="viewMaterialDetail(material)">
           

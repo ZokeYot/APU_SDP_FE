@@ -68,6 +68,8 @@ export class RegisterComponent {
 
 
   register() {
+    if (this.lastName === undefined)
+      this.lastName = ""
     const name = this.firstName + " " + this.lastName
     const dob = this.dob.replaceAll("-", "")
     this.service.register(name, this.email, this.password, this.gender, dob, this.profile_picture, this.lectureKey)

@@ -1,5 +1,5 @@
 <input type="search" class="text-2xl rounded-full block ml-auto mr-[100px] mt-20 px-2 py-2" 
-    placeholder="Search User" (input)="searchUser($event)"/>
+    placeholder="Search User" (input)="searchUser($event)" [(ngModel)]="searching"/>
 
 <div class="flex">
    <button routerLink="/update-group/{{groupID}}" 
@@ -11,7 +11,7 @@
 
 </div>
 
-<div class="flex flex-wrap justify-around" *ngIf="filteredUsers.length == 0 ">
+<div class="flex flex-wrap justify-around" *ngIf="filteredUsers.length == 0 && searching === undefined">
     <div *ngFor="let user of users"  (click)="toggleSelected(user)">
       <div [ngClass]="{
          'flex my-10 w-[500px] h-[200px] rounded-xl hover:bg-slate-500' : true,

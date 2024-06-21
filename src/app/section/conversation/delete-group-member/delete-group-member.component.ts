@@ -3,6 +3,7 @@ import { TestyService } from '../../../service/testy.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { UserInfo } from '../../../model/conversation';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 interface Member {
   memberID: string
@@ -11,7 +12,7 @@ interface Member {
 @Component({
   selector: 'app-delete-group-member',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './delete-group-member.component.html',
   styleUrl: './delete-group-member.component.css'
 })
@@ -21,6 +22,7 @@ export class DeleteGroupMemberComponent {
   selectedUsers: Member[] = []
   groupID !: string
   userID!: string
+  searching !: string
 
   constructor(private service: TestyService, private router: Router, private route: ActivatedRoute) {
     this.groupID = this.route.snapshot.paramMap.get('id') as string;

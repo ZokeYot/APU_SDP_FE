@@ -25,7 +25,7 @@ export class LecMainPageComponent {
   }
 
   get_recent_quiz() {
-    this.service.get_all_quiz().subscribe(data => this.recent_quiz = data)
+    this.service.get_lecturer_quiz(this.userID).subscribe(data => this.recent_quiz = data)
   }
 
 }
