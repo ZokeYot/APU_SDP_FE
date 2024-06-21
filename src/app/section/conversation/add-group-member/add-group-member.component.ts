@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, resolveForwardRef } from '@angular/core';
 import { TestyService } from '../../../service/testy.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { UserInfo } from '../../../model/conversation';
@@ -62,7 +62,7 @@ export class AddGroupMemberComponent {
         this.router.navigateByUrl('/conversation')
       },
       error: (response) => {
-        alert(response.error.failre || "Failed to add members")
+        alert(response.error.failure || "Failed to add members")
         this.router.navigateByUrl('/conversation')
       }
     })

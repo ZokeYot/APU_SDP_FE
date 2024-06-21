@@ -71,6 +71,8 @@ export class QuizComponent {
           this.router.navigate([`/attempt-quiz/${this.quizID}`], {
             queryParams: { use: 'yes' }
           })
+        } else {
+          this.router.navigateByUrl(`/attempt-quiz/${this.quizID}`)
         }
       } else {
         this.router.navigateByUrl(`/attempt-quiz/${this.quizID}`)
