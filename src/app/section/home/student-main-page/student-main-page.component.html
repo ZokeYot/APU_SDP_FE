@@ -15,7 +15,7 @@
 
 <div id="recent_quiz_sec">
     <h1 id="recent_created_quiz">Recently Created Quiz</h1>
-    <h3 routerLink="/quiz" id="view_more">View More ></h3>
+    <h3 routerLink="/quiz" id="view_more">View More</h3>
 
     <div class="flex flex-wrap justify-between">
         <div *ngFor="let quiz of recent_quiz.slice(-3).reverse()" routerLink="/quiz/{{quiz.quizID}}"
