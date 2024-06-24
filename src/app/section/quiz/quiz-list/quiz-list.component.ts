@@ -21,8 +21,11 @@ export class QuizListComponent {
   searching !: string
 
   constructor(private service: TestyService, private router: Router) {
-    this.service.get_all_quiz().subscribe(data => this.quizzes = data)
+    this.service.get_all_quiz().subscribe(data => {
+      this.quizzes = data
+    })
     this.service.get_lecturer_quiz(this.userID).subscribe(data => this.lecturerQuizzes = data)
+
   }
 
   searchQuiz(event: Event) {

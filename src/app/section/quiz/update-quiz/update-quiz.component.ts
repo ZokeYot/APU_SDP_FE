@@ -30,7 +30,7 @@ export class UpdateQuizComponent {
     if (question.content.options.length >= 4) {
       alert('Max 4 Options');
     } else {
-      question.content.options.push('');
+      question.content.options.push({ option: "" });
     }
   }
 
@@ -49,6 +49,10 @@ export class UpdateQuizComponent {
     return index === 0;  // Lock the first input
   }
 
+  print(string: any) {
+    console.log(string)
+  }
+
   addQuestion(): void {
     if (this.quiz.questions.length >= 10)
       alert('Max 10 Question')
@@ -58,7 +62,7 @@ export class UpdateQuizComponent {
         type: 'True and False',
         content: {
           answer: '',
-          options: []
+          options: [{ option: "" }]
         }
       });
     }
@@ -116,6 +120,7 @@ export class UpdateQuizComponent {
   }
 
   submit() {
+    console.log(this.quiz)
     this.service.update_quiz(this.quiz).subscribe({
       next: (response) => {
         alert(response.success)
